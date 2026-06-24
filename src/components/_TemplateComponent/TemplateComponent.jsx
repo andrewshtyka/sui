@@ -25,5 +25,5 @@ import React from "react";
 // #endregion ===========================
 
 export default function TemplateComponent() {
-  return <></>;
+	return <></>;
 }
