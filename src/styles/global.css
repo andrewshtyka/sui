@@ -1,0 +1,17 @@
+/* ================================================== */
+/* */
+/* BASE */
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+  /* background-color: var(--color-bg-primary); */
+  /* color: var(--color-text-dark); */
+  /* font-family: var(--font); */
+}
+
+/* ================================================== */
+/* */
+/* APPEARANCE */
+::selection {
+}
