@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { useMotionValue } from "motion/react";
+import { useSpring } from "motion/react";
 
 // assets
 
@@ -26,19 +26,22 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function usePointerPosition() {
-	// coordinates original
-	const x = useMotionValue(0);
-	const y = useMotionValue(0);
+const spring = { damping: 20, stiffness: 150, restDelta: 0.01 };
 
-	// coordinates normalized
-	const xNormal = useMotionValue(0);
-	const yNormal = useMotionValue(0);
+export default function useBlurPosition(isHovered = false) {
+	const xNormal = useSpring(0.5, spring);
+	const yNormal = useSpring(0.5, spring);
 
 	React.useEffect(() => {
+		// isHovered === false (back to center)
+		if (!isHovered) {
+			xNormal.set(0.5);
+			yNormal.set(0.5);
+			return;
+		}
+
+		// isHovered === true (follow pointer)
 		const handlePointerMove = ({ clientX, clientY }) => {
-			x.set(clientX);
-			y.set(clientY);
 			xNormal.set(clientX / window.innerWidth);
 			yNormal.set(clientY / window.innerHeight);
 		};
@@ -47,7 +50,7 @@ export default function usePointerPosition() {
 
 		return () =>
 			window.removeEventListener("pointermove", handlePointerMove);
-	}, []);
+	}, [isHovered]);
 
-	return { x, y, xNormal, yNormal };
+	return { xNormal, yNormal };
 }

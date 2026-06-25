@@ -6,6 +6,7 @@
 import { serif, mono } from "@/utils/importFonts";
 
 // providers
+import HeroTextHoverProvider from "@/providers/HeroTextHoverProvider";
 
 // styles
 import "@/styles/tokens/spacings.css";
@@ -24,7 +25,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${serif.variable} ${mono.variable}`}>
-			<body>{children}</body>
+			<body>
+				<HeroTextHoverProvider>{children}</HeroTextHoverProvider>
+			</body>
 		</html>
 	);
 }

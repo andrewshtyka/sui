@@ -19,6 +19,7 @@
 	/* Background */
 	--color-bg-dark: var(--color-gray-0);
 	--color-bg-light: var(--color-light);
+	--color-bg-accent: var(--color-blue);
 
 	/* ================================================== */
 	/* */
@@ -32,4 +33,5 @@
 	/* Text */
 	--color-text-dark: var(--color-gray-0);
 	--color-text-light: var(--color-light);
+	--color-text-accent: var(--color-blue);
 }
