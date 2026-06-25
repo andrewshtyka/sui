@@ -1,11 +1,18 @@
 // import font
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
-export const font = Inter({
-  variable: "--font",
-  subsets: ["latin"],
-  weight: "variable",
-  axes: ["opsz"],
-  style: "normal",
-  display: "swap",
+export const serif = localFont({
+	variable: "--font-serif",
+	src: "../fonts/TWKEverett-Regular.otf",
+	weight: "400",
+	style: "normal",
+	display: "swap",
+});
+
+export const mono = localFont({
+	variable: "--font-mono",
+	src: "../fonts/TWKEverettMono-Regular.otf",
+	weight: "400",
+	style: "normal",
+	display: "swap",
 });

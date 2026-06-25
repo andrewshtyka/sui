@@ -3,15 +3,16 @@
 /* BASE */
 
 body {
-  min-height: 100dvh;
-  overflow-x: hidden;
-  /* background-color: var(--color-bg-primary); */
-  /* color: var(--color-text-dark); */
-  /* font-family: var(--font); */
+	height: 100dvh;
+	overflow-x: hidden;
+	background-color: var(--color-bg-dark);
+	color: var(--color-text-light);
 }
 
 /* ================================================== */
 /* */
 /* APPEARANCE */
+
 ::selection {
+  background-color: var(--color-bg-dark);
 }

@@ -19,10 +19,15 @@
 // import css from '.'
 
 // utility
+import Hero from "@/components/layout/1_Hero/Hero";
 import React from "react";
 
 // #endregion ===========================
 
 export default function HomePage() {
-  return <>Hello!</>;
+	return (
+		<>
+			<Hero />
+		</>
+	);
 }

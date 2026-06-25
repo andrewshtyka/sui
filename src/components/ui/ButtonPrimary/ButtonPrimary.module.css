@@ -1,0 +1,9 @@
+.button {
+	padding-block: 0.9vmax;
+	padding-inline: 1.8vmax;
+}
+
+.content {
+	position: relative;
+	bottom: 0.05em;
+}

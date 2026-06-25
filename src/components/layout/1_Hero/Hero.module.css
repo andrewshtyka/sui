@@ -1,0 +1,44 @@
+.section {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	height: 100%;
+}
+
+.title {
+	grid-column: 1 / -1;
+	grid-row: 2 / 3;
+
+	text-align: center;
+	justify-self: center;
+	align-self: center;
+
+	padding-block-end: 3vmax;
+}
+
+.bottom {
+	grid-column: 1 / -1;
+	grid-row: 3 / -1;
+
+	justify-self: center;
+	align-self: flex-end;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	row-gap: 3vmax;
+	padding-block-end: 3.5vmax;
+
+	z-index: 1;
+}
+
+.subtitle {
+	text-align: center;
+	max-width: 25ch;
+}
+
+.container_buttons {
+	display: flex;
+	justify-content: center;
+}
