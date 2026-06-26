@@ -18,8 +18,8 @@ import "@/styles/global.css";
 // #endregion ===========================
 
 export const metadata = {
-	title: "Next.js 16 Project Starter",
-	description: "Description for Next.js 16 Project Starter",
+	title: "Sui | The Full Stack for a New Global Economy",
+	description: "The Full Stack for a New Global Economy",
 };
 
 export default function RootLayout({ children }) {

@@ -1,11 +1,28 @@
 .line {
 	vertical-align: top;
+
+	--offset: 0.1em;
+
+	display: inline-flex;
+	height: calc(var(--font-size-h3) + var(--offset));
+	overflow: hidden;
 }
 
-.line_lottie {
-	display: inline-flex;
-	flex-wrap: nowrap;
-	align-items: center;
+@media (width >= 480px) {
+	.line {
+		--offset: 0.075em;
+	}
+}
+
+@media (width >= 992px) {
+	.line {
+		--offset: 0.05em;
+	}
+}
+
+.container_lottie {
+	position: relative;
+	top: var(--offset);
 }
 
 .container_text {
@@ -18,16 +35,21 @@
 .text {
 	color: var(--color-text-light);
 	mix-blend-mode: difference;
-	height: calc(var(--font-size-h3) + 0.05em);
 }
 
 .bar {
 	position: absolute;
 	z-index: -1;
 	left: 0;
-	top: 0.075em;
+	top: var(--offset);
 
 	height: 100%;
-	width: 50%;
+	width: 100%;
 	background-color: var(--color-bg-dark);
+	pointer-events: none;
+}
+
+.text::selection {
+	color: var(--color-text-dark);
+	background-color: var(--color-bg-light);
 }

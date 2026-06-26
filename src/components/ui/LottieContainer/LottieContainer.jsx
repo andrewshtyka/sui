@@ -27,7 +27,7 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function LottieContainer({ animationData }) {
+export default function LottieContainer({ animationData, ...rest }) {
 	const container = React.useRef(null);
 
 	React.useEffect(() => {
@@ -48,5 +48,5 @@ export default function LottieContainer({ animationData }) {
 		return () => anim.destroy();
 	}, [animationData]);
 
-	return <span ref={container} className={css.container} />;
+	return <span ref={container} className={css.container} {...rest} />;
 }

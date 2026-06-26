@@ -40,9 +40,10 @@
 }
 
 .text {
-	padding-block-end: var(--gap-section-S);
 	max-width: 25ch;
 	vertical-align: middle;
+	/* padding-block-end: var(--gap-section-S); */
+	padding-block-end: 100svh;
 }
 
 .section::selection {
