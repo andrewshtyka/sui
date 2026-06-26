@@ -31,4 +31,19 @@
 	will-change: background-image;
 
 	cursor: default;
+
+	/* padding-inline: 10vmin; */
+	max-width: 5ch;
+}
+
+@media (width >= 992px) {
+	.title {
+		max-width: none;
+		/* padding-inline: 3vmin; */
+	}
+}
+
+.title::selection {
+	background-color: var(--color-bg-dark);
+	color: var(--color-text-light);
 }

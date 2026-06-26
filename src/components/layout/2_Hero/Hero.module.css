@@ -3,6 +3,8 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, 1fr);
 	height: 100%;
+
+	padding-inline: var(--padding-body);
 }
 
 .bottom {
@@ -16,10 +18,31 @@
 	flex-direction: column;
 	align-items: center;
 
-	row-gap: 3vmax;
-	padding-block-end: 3.5vmax;
-
 	z-index: 1;
+
+	row-gap: 15vmin;
+	padding-block-end: 4vmin;
+}
+
+@media (width >= 480px) {
+	.bottom {
+		row-gap: 8vmin;
+		padding-block-end: 5vmin;
+	}
+}
+
+@media (width >= 768px) {
+	.bottom {
+		row-gap: 6vmin;
+		padding-block-end: 6vmin;
+	}
+}
+
+@media (width >= 992px) {
+	.bottom {
+		row-gap: 3vmax;
+		padding-block-end: 3.5vmax;
+	}
 }
 
 .subtitle {
