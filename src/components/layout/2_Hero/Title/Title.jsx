@@ -18,13 +18,13 @@ import { motion, useTransform } from "motion/react";
 import useBlurPosition from "@/hooks/useBlurPosition";
 
 // providers / context
+import { HeroTextHoverContext } from "@/providers/HeroTextHoverProvider";
 
 // styles
 import css from "./Title.module.css";
 
 // utility
 import React from "react";
-import { HeroTextHoverContext } from "@/providers/HeroTextHoverProvider";
 
 // #endregion ===========================
 

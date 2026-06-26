@@ -3,9 +3,11 @@
 	grid-row: 2 / 3;
 	justify-self: center;
 	align-self: center;
+
+	width: 100%;
+	height: 100%;
 	padding-block: 5vmax;
 	padding-block-end: 8vmax;
-
 	text-align: center;
 
 	background-color: var(--color-bg-accent);
@@ -29,9 +31,4 @@
 	will-change: background-image;
 
 	cursor: default;
-}
-
-.title::selection {
-	background-color: var(--color-bg-dark);
-	color: var(--color-text-light);
 }

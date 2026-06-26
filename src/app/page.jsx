@@ -8,6 +8,8 @@
 // assets
 
 // components
+import HeroBg from "@/components/layout/1_HeroBg/HeroBg";
+import Hero from "@/components/layout/2_Hero/Hero";
 
 // constants
 
@@ -19,7 +21,6 @@
 // import css from '.'
 
 // utility
-import Hero from "@/components/layout/1_Hero/Hero";
 import React from "react";
 
 // #endregion ===========================
@@ -27,6 +28,7 @@ import React from "react";
 export default function HomePage() {
 	return (
 		<>
+			<HeroBg />
 			<Hero />
 		</>
 	);

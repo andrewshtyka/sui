@@ -2,6 +2,10 @@
 /* */
 /* BASE */
 
+html {
+	scrollbar-width: none; 
+}
+
 body {
 	height: 100dvh;
 	overflow-x: hidden;

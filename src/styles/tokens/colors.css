@@ -13,6 +13,7 @@
 
 	/* accent */
 	--color-blue: hsl(var(--hue), 100%, 58%);
+	--color-blue-900: hsl(var(--hue), 100%, 96%);
 
 	/* ================================================== */
 	/* */
@@ -20,6 +21,7 @@
 	--color-bg-dark: var(--color-gray-0);
 	--color-bg-light: var(--color-light);
 	--color-bg-accent: var(--color-blue);
+	--color-bg-accent-light: var(--color-blue-900);
 
 	/* ================================================== */
 	/* */
