@@ -29,5 +29,19 @@
 	/* ================================================== */
 	/* */
 	/* Padding */
-	--padding-body: 1.5svw;
+	--padding-body: 4vmin;
+	--gap-section-end: 35vmin;
+}
+
+@media (width >= 768px) {
+	:root {
+		--gap-section-end: 19vmin;
+	}
+}
+
+@media (width >= 992px) {
+	:root {
+		--padding-body: 1.5vmax;
+		--gap-section-end: 19vmax;
+	}
 }

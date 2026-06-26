@@ -2,9 +2,10 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, 1fr);
-	height: 100%;
+	height: 100svh;
 
 	padding-inline: var(--padding-body);
+	margin-block-end: var(--gap-section-end);
 }
 
 .bottom {

@@ -37,7 +37,7 @@ export default function Title({ children }) {
 
 	return (
 		<motion.h1
-			className={`f_h1 ${css.title}`}
+			className={`f_h1 f_center ${css.title}`}
 			style={{
 				"--text-x": mouseX,
 				"--text-y": mouseY,

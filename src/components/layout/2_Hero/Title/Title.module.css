@@ -8,7 +8,6 @@
 	height: 100%;
 	padding-block: 5vmax;
 	padding-block-end: 8vmax;
-	text-align: center;
 
 	background-color: var(--color-bg-accent);
 	background-clip: text;
@@ -32,14 +31,12 @@
 
 	cursor: default;
 
-	/* padding-inline: 10vmin; */
 	max-width: 5ch;
 }
 
 @media (width >= 992px) {
 	.title {
 		max-width: none;
-		/* padding-inline: 3vmin; */
 	}
 }
 

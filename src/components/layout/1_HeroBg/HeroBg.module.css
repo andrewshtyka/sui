@@ -71,5 +71,5 @@
 	background-color: var(--color-bg-accent);
 	transform: translateZ(0);
 
-    z-index: 10;
+	z-index: 1;
 }
