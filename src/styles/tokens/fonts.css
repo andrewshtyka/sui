@@ -54,13 +54,13 @@
 
 @media (width >= 480px) {
 	:root {
-		--font-size-h3: 10vmin;
+		--font-size-h3: 9.75vmin;
 		--font-size-h6: 5vmin;
 		--font-size-body-1: 3vmin;
 		--font-size-body-3: 2.75vmin;
 		--font-size-mono-body: 2.15vmin;
 
-		--font-line-height-h3: 1;
+		--font-line-height-h3: 1.1;
 	}
 }
 

@@ -41,6 +41,8 @@
 
 .text {
 	padding-block-end: var(--gap-section-S);
+	max-width: 25ch;
+	vertical-align: middle;
 }
 
 .section::selection {
@@ -48,8 +50,6 @@
 	color: var(--color-text-light);
 }
 
-/* ================================================== */
-/* */
-/* Lottie line */
-.line_lottie {
+.line {
+	vertical-align: top;
 }

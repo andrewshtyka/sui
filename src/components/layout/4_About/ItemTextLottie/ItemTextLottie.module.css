@@ -1,0 +1,33 @@
+.line {
+	vertical-align: top;
+}
+
+.line_lottie {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.container_text {
+	position: relative;
+	height: var(--font-size-h3);
+
+	padding-inline: 0.05em;
+}
+
+.text {
+	color: var(--color-text-light);
+	mix-blend-mode: difference;
+	height: calc(var(--font-size-h3) + 0.05em);
+}
+
+.bar {
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 0.075em;
+
+	height: 100%;
+	width: 50%;
+	background-color: var(--color-bg-dark);
+}

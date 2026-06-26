@@ -25,6 +25,7 @@ import css from "./About.module.css";
 // utility
 import React from "react";
 import LottieContainer from "@/components/ui/LottieContainer/LottieContainer";
+import ItemTextLottie from "./ItemTextLottie/ItemTextLottie";
 
 // #endregion ===========================
 
@@ -39,12 +40,11 @@ export default function About() {
 				{dataAbout.top.content.map(({ id, text, animationData }) => {
 					if (animationData) {
 						return (
-							<span key={id} className={css.line_lottie}>
-								<LottieContainer
-									animationData={animationData}
-								/>
-								{text}
-							</span>
+							<ItemTextLottie
+								key={id}
+								text={text}
+								animationData={animationData}
+							/>
 						);
 					}
 
