@@ -1,0 +1,55 @@
+.section {
+	position: relative;
+	z-index: 1;
+
+	padding-inline: var(--padding-body);
+	color: var(--color-text-dark);
+
+	background-color: var(--color-bg-light);
+}
+
+.title {
+	background-color: var(--color-gray-900);
+	width: fit-content;
+
+	padding-inline: 2vmin;
+	padding-block: 1vmin;
+
+	margin-block-end: var(--padding-body);
+}
+
+@media (width >= 480px) {
+	.title {
+		padding-inline: 1.25vmin;
+		padding-block: 0.75vmin;
+	}
+}
+
+@media (width >= 768px) {
+	.title {
+		padding-inline: 0.8vmin;
+		padding-block: 0.5vmin;
+	}
+}
+
+@media (width >= 992px) {
+	.title {
+		padding-inline: 0.5vmax;
+		padding-block: 0.25vmax;
+	}
+}
+
+.text {
+	padding-block-end: var(--gap-section-S);
+}
+
+.section::selection {
+	background-color: var(--color-bg-dark);
+	color: var(--color-text-light);
+}
+
+/* ================================================== */
+/* */
+/* Lottie line */
+.line_lottie {
+}

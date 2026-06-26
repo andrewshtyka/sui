@@ -5,7 +5,7 @@
 	height: 100svh;
 
 	padding-inline: var(--padding-body);
-	margin-block-end: var(--gap-section-end);
+	margin-block-end: var(--gap-section-L);
 }
 
 .bottom {

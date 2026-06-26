@@ -14,7 +14,7 @@ import Image from "next/image";
 // constants
 
 // data
-import { dataCompanies } from "@/data/2_companies";
+import { dataCompanies } from "@/data/2_dataCompanies";
 
 // hooks
 
@@ -39,14 +39,14 @@ export default function Companies() {
 				<ul className={css.list}>
 					{dataCompanies.logos.map(({ id, src, alt }) => (
 						<li key={`A-${id}`}>
-							<Image src={src} alt={alt} />
+							<Image src={src} alt={alt} loading="lazy" />
 						</li>
 					))}
 				</ul>
 				<ul className={css.list}>
 					{dataCompanies.logos.map(({ id, src, alt }) => (
 						<li key={`B-${id}`}>
-							<Image src={src} alt={alt} />
+							<Image src={src} alt={alt} loading="lazy" />
 						</li>
 					))}
 				</ul>

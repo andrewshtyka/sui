@@ -1,0 +1,6 @@
+.container {
+	display: inline-flex;
+	height: calc(var(--font-size-h3) * 0.8);
+	aspect-ratio: 1;
+	background-color: var(--color-bg-accent);
+}

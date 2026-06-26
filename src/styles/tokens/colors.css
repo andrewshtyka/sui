@@ -1,6 +1,6 @@
 :root {
 	/* monochrome */
-	--hue: 218;
+	--hue: 214;
 	--color-gray-0: hsl(var(--hue), 100%, 1%);
 	--color-gray-100: hsl(var(--hue), 12%, 8%);
 	--color-gray-200: hsl(var(--hue), 7%, 13%);
@@ -9,11 +9,12 @@
 	--color-gray-500: hsl(var(--hue), 10%, 33%);
 	--color-gray-600: hsl(var(--hue), 10%, 47%);
 	--color-gray-700: hsl(var(--hue), 10%, 58%);
+	--color-gray-900: hsl(var(--hue), 9%, 89%);
 	--color-light: hsl(var(--hue), 0%, 100%);
 
 	/* accent */
 	--color-blue: hsl(var(--hue), 100%, 58%);
-	--color-blue-900: hsl(var(--hue), 100%, 96%);
+	--color-blue-900: hsl(var(--hue), 100%, 100%);
 
 	/* ================================================== */
 	/* */

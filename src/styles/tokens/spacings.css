@@ -29,19 +29,25 @@
 	/* ================================================== */
 	/* */
 	/* Padding */
-	--padding-body: 4vmin;
-	--gap-section-end: 35vmin;
+	--padding-body: 3vmin;
+	--gap-section-L: 45vmin;
+	--gap-section-M: 40vmin;
+	--gap-section-S: 12vmin;
 }
 
 @media (width >= 768px) {
 	:root {
-		--gap-section-end: 19vmin;
+		--gap-section-L: 25vmin;
+		--gap-section-M: 25vmin;
+		--gap-section-S: 10vmin;
 	}
 }
 
 @media (width >= 992px) {
 	:root {
 		--padding-body: 1.5vmax;
-		--gap-section-end: 19vmax;
+		--gap-section-L: 19vmax;
+		--gap-section-M: 15vmax;
+		--gap-section-S: 4vmax;
 	}
 }

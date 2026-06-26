@@ -21,6 +21,7 @@ npm run dev
 - [Motion](https://motion.dev/docs/react)
 - [Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/getting-started)
 - [React remove scroll](https://www.npmjs.com/package/react-remove-scroll)
+- [Lottie Web](https://github.com/airbnb/lottie-web)
 
 <br/>
 
