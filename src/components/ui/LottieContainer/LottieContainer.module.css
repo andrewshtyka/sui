@@ -1,6 +1,5 @@
 .container {
 	display: inline-flex;
-	height: var(--font-size-h3);
 	aspect-ratio: 1;
 	background-color: var(--color-bg-accent);
 }

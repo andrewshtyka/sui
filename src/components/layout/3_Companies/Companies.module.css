@@ -11,7 +11,7 @@
 	margin-inline: auto;
 	max-width: 23ch;
 
-	margin-block-end: var(--gap-section-S);
+	margin-block-end: var(--gap-section-XS);
 }
 
 @media (width >= 992px) {

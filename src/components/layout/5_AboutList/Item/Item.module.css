@@ -1,0 +1,38 @@
+.item {
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	column-gap: 1em;
+
+	--gap: 3vmin;
+	padding-block: var(--gap);
+}
+
+@media (width >= 480px) {
+	.container {
+		--gap: 2.25vmin;
+	}
+}
+
+@media (width >= 768px) {
+	.container {
+		--gap: 1.75vmin;
+	}
+}
+
+@media (width >= 992px) {
+	.container {
+		--gap: 0.8vmax;
+	}
+}
+
+.container_lottie {
+	height: calc(var(--font-size-h5) + 1.25em);
+}

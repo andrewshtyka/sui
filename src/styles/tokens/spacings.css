@@ -29,25 +29,34 @@
 	/* ================================================== */
 	/* */
 	/* Padding */
-	--padding-body: 3vmin;
+	--padding-body: 3.5vmin;
 	--gap-section-L: 45vmin;
 	--gap-section-M: 40vmin;
-	--gap-section-S: 12vmin;
+	--gap-section-S: 25vmin;
+	--gap-section-XS: 12vmin;
+}
+
+@media (width >= 480px) {
+	:root {
+		--gap-section-S: 17vmin;
+	}
 }
 
 @media (width >= 768px) {
 	:root {
 		--gap-section-L: 25vmin;
 		--gap-section-M: 25vmin;
-		--gap-section-S: 10vmin;
+		--gap-section-S: 11vmin;
+		--gap-section-XS: 10vmin;
 	}
 }
 
 @media (width >= 992px) {
 	:root {
-		--padding-body: 1.5vmax;
+		--padding-body: 1.75vmax;
 		--gap-section-L: 19vmax;
 		--gap-section-M: 15vmax;
-		--gap-section-S: 4.5vmax;
+		--gap-section-S: 6.5vmax;
+		--gap-section-XS: 4.5vmax;
 	}
 }

@@ -2,8 +2,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100svw;
 	height: 200svh;
+	overflow-x: hidden;
 }
 
 .container_balls {

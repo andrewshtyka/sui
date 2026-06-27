@@ -14,6 +14,7 @@ export const dataAbout = {
 				id: 2,
 				text: "Superior products",
 				animationData: lottie_1,
+				endPoint: 0.5,
 			},
 			{
 				id: 3,
@@ -23,6 +24,7 @@ export const dataAbout = {
 				id: 4,
 				text: "real user trust",
 				animationData: lottie_2,
+				endPoint: 1,
 			},
 			{
 				id: 5,
@@ -36,6 +38,7 @@ export const dataAbout = {
 				id: 7,
 				text: "value that's shared",
 				animationData: lottie_3,
+				endPoint: 1,
 			},
 			{
 				id: 8,
@@ -46,5 +49,6 @@ export const dataAbout = {
 
 	bottom: {
 		title: "Sue is",
+		decorative: "[ → ]",
 	},
 };

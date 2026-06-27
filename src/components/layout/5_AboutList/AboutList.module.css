@@ -1,0 +1,39 @@
+.section {
+	position: relative;
+	z-index: 1;
+
+	padding-inline: var(--padding-body);
+	padding-block-end: var(--padding-body);
+
+	color: var(--color-text-dark);
+	background-color: var(--color-bg-light-dimmed);
+
+	display: grid;
+
+	--gc-1: 40vmin;
+	grid-template-columns: var(--gc-1) 1fr;
+
+	height: 120svh;
+}
+
+@media (width >= 480px) {
+	.section {
+		--gc-1: 19vmin;
+	}
+}
+
+@media (width >= 992px) {
+	.section {
+		--gc-1: 19vmax;
+	}
+}
+
+.list {
+	grid-column: 1 / -1;
+}
+
+@media (width >= 480px) {
+	.list {
+		grid-column: 2 / -1;
+	}
+}

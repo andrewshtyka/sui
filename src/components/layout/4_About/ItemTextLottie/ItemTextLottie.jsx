@@ -4,7 +4,13 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+	motion,
+	useInView,
+	useScroll,
+	useSpring,
+	useTransform,
+} from "motion/react";
 
 // assets
 
@@ -27,22 +33,32 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function ItemTextLottie({ text, animationData }) {
+export default function ItemTextLottie({ text, animationData, endPoint = 1 }) {
 	const barRef = React.useRef(null);
+	const isInView = useInView(barRef);
+
 	const { scrollYProgress } = useScroll({
 		target: barRef,
 		offset: ["start end", "start 50%"],
 	});
+	const smoothProgress = useSpring(scrollYProgress, {
+		stiffness: 120,
+		damping: 20,
+		mass: 0.5,
+	});
 	const clipPath = useTransform(
-		scrollYProgress,
-		[0, 1],
+		smoothProgress,
+		[0, endPoint],
 		["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"]
 	);
 
 	return (
 		<span ref={barRef} className={css.line}>
 			<span className={css.container_lottie}>
-				<LottieContainer animationData={animationData} />
+				<LottieContainer
+					animationData={animationData}
+					isInView={isInView}
+				/>
 			</span>
 			<span className={css.container_text}>
 				<span className={css.text}>{text}</span>

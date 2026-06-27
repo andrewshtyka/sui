@@ -9,6 +9,7 @@
 // assets
 
 // components
+import ItemTextLottie from "./ItemTextLottie/ItemTextLottie";
 
 // constants
 
@@ -24,37 +25,47 @@ import css from "./About.module.css";
 
 // utility
 import React from "react";
-import LottieContainer from "@/components/ui/LottieContainer/LottieContainer";
-import ItemTextLottie from "./ItemTextLottie/ItemTextLottie";
 
 // #endregion ===========================
 
 export default function About() {
 	return (
 		<section className={css.section}>
-			<h2 className={`f_mono_body ${css.title}`}>
+			<h2 className={`f_mono_body ${css.title} ${css.top}`}>
 				{dataAbout.top.title}
 			</h2>
 
-			<p className={`f_h3 ${css.text}`}>
-				{dataAbout.top.content.map(({ id, text, animationData }) => {
-					if (animationData) {
+			<p className={`f_h3 ${css.paragraph}`}>
+				{dataAbout.top.content.map(
+					({ id, text, animationData, endPoint }) => {
+						if (animationData) {
+							return (
+								<ItemTextLottie
+									key={id}
+									text={text}
+									animationData={animationData}
+									endPoint={endPoint}
+								/>
+							);
+						}
+
 						return (
-							<ItemTextLottie
-								key={id}
-								text={text}
-								animationData={animationData}
-							/>
+							<span key={id} className={css.line}>
+								{text}
+							</span>
 						);
 					}
-
-					return (
-						<span key={id} className={css.line}>
-							{text}
-						</span>
-					);
-				})}
+				)}
 			</p>
+
+			<div className={css.grid}>
+				<span className={`f_mono_body ${css.arrow} ${css.gc_1}`}>
+					{dataAbout.bottom.decorative}
+				</span>
+				<h3 className={`f_mono_body ${css.title} ${css.gc_2}`}>
+					{dataAbout.bottom.title}
+				</h3>
+			</div>
 		</section>
 	);
 }

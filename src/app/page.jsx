@@ -12,6 +12,7 @@ import HeroBg from "@/components/layout/1_HeroBg/HeroBg";
 import Hero from "@/components/layout/2_Hero/Hero";
 import Companies from "@/components/layout/3_Companies/Companies";
 import About from "@/components/layout/4_About/About";
+import AboutList from "@/components/layout/5_AboutList/AboutList";
 
 // constants
 
@@ -34,6 +35,7 @@ export default function HomePage() {
 			<Hero />
 			<Companies />
 			<About />
+			<AboutList />
 		</>
 	);
 }

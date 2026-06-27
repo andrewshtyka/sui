@@ -18,8 +18,8 @@ import "@/styles/global.css";
 // #endregion ===========================
 
 export const metadata = {
-	title: "Sui | The Full Stack for a New Global Economy",
-	description: "The Full Stack for a New Global Economy",
+	title: "Sui",
+	description: "Reverse-engineered home page of Sui,io",
 };
 
 export default function RootLayout({ children }) {
