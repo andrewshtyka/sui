@@ -13,6 +13,7 @@ import Hero from "@/components/layout/2_Hero/Hero";
 import Companies from "@/components/layout/3_Companies/Companies";
 import About from "@/components/layout/4_About/About";
 import AboutList from "@/components/layout/5_AboutList/AboutList";
+import Toolkit from "@/components/layout/6_Toolkit/Toolkit";
 
 // constants
 
@@ -36,6 +37,7 @@ export default function HomePage() {
 			<Companies />
 			<About />
 			<AboutList />
+			<Toolkit />
 		</>
 	);
 }

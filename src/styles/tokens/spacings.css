@@ -34,6 +34,7 @@
 	--gap-section-M: 40vmin;
 	--gap-section-S: 25vmin;
 	--gap-section-XS: 12vmin;
+	--gap-section-XXS: 6vmin;
 }
 
 @media (width >= 480px) {
@@ -48,6 +49,7 @@
 		--gap-section-M: 25vmin;
 		--gap-section-S: 11vmin;
 		--gap-section-XS: 10vmin;
+		--gap-section-XXS: 5vmin;
 	}
 }
 
@@ -58,5 +60,6 @@
 		--gap-section-M: 15vmax;
 		--gap-section-S: 6.5vmax;
 		--gap-section-XS: 4.5vmax;
+		--gap-section-XXS: 1.75vmax;
 	}
 }

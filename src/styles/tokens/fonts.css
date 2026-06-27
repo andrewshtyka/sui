@@ -9,13 +9,13 @@
 	/* */
 	/* Font size */
 	--font-size-h1: 25vmin;
-	--font-size-h2: 5.625em;
+	--font-size-h2: 11.5vmin;
 	--font-size-h3: 8.5vmin;
 	--font-size-h4: 3.75em;
 	--font-size-h5: 6vmin;
 	--font-size-h6: 5.5vmin;
 	--font-size-body-1: 4.25vmin;
-	--font-size-body-2: 1.125em;
+	--font-size-body-2: 4vmin;
 	--font-size-body-3: 3.75vmin;
 	--font-size-mono-title: 0.875em;
 	--font-size-mono-body: 3.25vmin;
@@ -54,10 +54,12 @@
 
 @media (width >= 480px) {
 	:root {
+		--font-size-h2: 15vmin;
 		--font-size-h3: 9.75vmin;
 		--font-size-h5: 6vmin;
 		--font-size-h6: 5vmin;
 		--font-size-body-1: 3vmin;
+		--font-size-body-2: 3.25vmin;
 		--font-size-body-3: 2.75vmin;
 		--font-size-mono-body: 2.15vmin;
 
@@ -68,9 +70,11 @@
 @media (width >= 768px) {
 	:root {
 		--font-size-h1: 20vmin;
+		--font-size-h2: 11vmin;
 		--font-size-h3: 9vmin;
 		--font-size-h6: 3.25vmin;
 		--font-size-body-1: 2.5vmin;
+		--font-size-body-2: 2.25vmin;
 		--font-size-body-3: 1.75vmin;
 		--font-size-mono-body: 1.4vmin;
 	}
@@ -79,10 +83,12 @@
 @media (width >= 992px) {
 	:root {
 		--font-size-h1: 12.5vmax;
+		--font-size-h2: 6.25vmax;
 		--font-size-h3: 5.4vmax;
 		--font-size-h5: 3.1vmax;
 		--font-size-h6: 1.9vmax;
 		--font-size-body-1: 1.5vmax;
+		--font-size-body-2: 1.25vmax;
 		--font-size-body-3: 1vmax;
 		--font-size-mono-body: 0.85vmax;
 	}

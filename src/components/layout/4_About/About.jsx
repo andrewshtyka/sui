@@ -14,7 +14,7 @@ import ItemTextLottie from "./ItemTextLottie/ItemTextLottie";
 // constants
 
 // data
-import { dataAbout } from "@/data/3_dataAbout";
+import { dataAbout } from "@/data/dataAbout";
 
 // hooks
 

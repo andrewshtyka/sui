@@ -3,7 +3,7 @@
 	z-index: 1;
 
 	padding-inline: var(--padding-body);
-	padding-block-end: var(--padding-body);
+	padding-block-end: var(--gap-section-M);
 
 	color: var(--color-text-dark);
 	background-color: var(--color-bg-light-dimmed);
@@ -12,8 +12,6 @@
 
 	--gc-1: 40vmin;
 	grid-template-columns: var(--gc-1) 1fr;
-
-	height: 120svh;
 }
 
 @media (width >= 480px) {

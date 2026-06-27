@@ -14,7 +14,7 @@ import Image from "next/image";
 // constants
 
 // data
-import { dataCompanies } from "@/data/2_dataCompanies";
+import { dataCompanies } from "@/data/dataCompanies";
 
 // hooks
 

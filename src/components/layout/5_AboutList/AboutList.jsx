@@ -13,7 +13,7 @@ import Item from "./Item/Item";
 // constants
 
 // data
-import { dataAboutList } from "@/data/4_dataAboutList";
+import { dataAboutList } from "@/data/dataAboutList";
 
 // hooks
 

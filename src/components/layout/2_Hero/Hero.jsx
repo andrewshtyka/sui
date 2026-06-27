@@ -16,7 +16,7 @@ import Title from "./Title/Title";
 // constants
 
 // data
-import { dataHero } from "@/data/1_dataHero";
+import { dataHero } from "@/data/dataHero";
 
 // hooks
 
