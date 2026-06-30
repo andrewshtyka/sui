@@ -6,7 +6,7 @@
 
 	width: 100%;
 	height: 100%;
-	padding-block: 1vmax;
+	padding-block-start: 4vmax;
 	padding-block-end: 4vmax;
 
 	background-color: var(--color-bg-accent);

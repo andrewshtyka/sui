@@ -31,9 +31,13 @@ import React from "react";
 export default function Blur() {
 	const { isHovered } = React.useContext(HeroTextHoverContext);
 
-	const { xNormal, yNormal } = useBlurPosition(isHovered);
+	const { xNormal, yNormal, start, end_1, end_2 } =
+		useBlurPosition(isHovered);
 	const mouseX = useTransform(xNormal, (value) => `${value * 100}%`);
 	const mouseY = useTransform(yNormal, (value) => `${value * 100}%`);
+	const startVar = useTransform(start, (value) => `${value * 100}%`);
+	const end_1_Var = useTransform(end_1, (value) => `${value * 100}%`);
+	const end_2_Var = useTransform(end_2, (value) => `${value * 100}%`);
 
 	return (
 		<motion.div
@@ -41,6 +45,9 @@ export default function Blur() {
 			style={{
 				"--mouse-x": mouseX,
 				"--mouse-y": mouseY,
+				"--start": startVar,
+				"--end-1": end_1_Var,
+				"--end-2": end_2_Var,
 			}}
 		>
 			<div />

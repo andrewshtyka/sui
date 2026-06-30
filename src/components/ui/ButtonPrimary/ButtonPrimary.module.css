@@ -19,8 +19,8 @@
 
 @media (width >= 992px) {
 	.button {
-		padding-inline: 1.8vmax;
-		padding-block: 0.9vmax;
+		padding-inline: 2vmax;
+		padding-block: 1vmax;
 	}
 }
 

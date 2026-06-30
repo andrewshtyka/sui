@@ -17,8 +17,8 @@
 		mask: radial-gradient(
 			circle at var(--mouse-x) var(--mouse-y),
 			transparent 0%,
-			transparent 14%,
-			var(--color-bg-dark) 24%
+			transparent var(--start),
+			var(--color-bg-dark) var(--end-1)
 		);
 	}
 
@@ -27,8 +27,8 @@
 		mask: radial-gradient(
 			circle at var(--mouse-x) var(--mouse-y),
 			transparent 0%,
-			transparent 14%,
-			var(--color-bg-dark) 38%
+			transparent var(--start),
+			var(--color-bg-dark) var(--end-2)
 		);
 	}
 }
