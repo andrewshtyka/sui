@@ -1,10 +1,15 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+import {
+	motion,
+	useMotionValueEvent,
+	useScroll,
+	cubicBezier,
+} from "motion/react";
 
 // assets
 
@@ -37,10 +42,29 @@ export default function Card({
 	videoPoster,
 	isOdd,
 }) {
+	const [isOpened, setIsOpened] = React.useState(false);
+	const ref = React.useRef(null);
+	const progressRef = React.useRef(0);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["start 60%", "start 60%"],
+	});
+
+	useMotionValueEvent(scrollYProgress, "change", (latest) => {
+		progressRef.current = latest;
+
+		if (progressRef.current === 1) {
+			setIsOpened(true);
+		} else if (progressRef.current === 0) {
+			setIsOpened(false);
+		}
+	});
+
 	const gridColumnClass = isOdd ? `${css.is_odd}` : `${css.is_even}`;
 
 	return (
 		<li
+			ref={ref}
 			className={`${css.container} ${gridColumnClass}`}
 			style={{ gridRow: `${num} / ${num + 1}` }}
 		>
@@ -53,9 +77,20 @@ export default function Card({
 				<div className={css.invisible_box} />
 			</div>
 
-			{/* video */}
-			<div className={css.mid}>
-				<video
+			{/* mid */}
+			<motion.div
+				className={css.mid}
+				initial={{ clipPath: "var(--clip-path-closed)" }}
+				animate={{
+					clipPath: isOpened
+						? "var(--clip-path-opened)"
+						: "var(--clip-path-closed)",
+				}}
+				transition={transition}
+			>
+				<div className={css.line_container_mid} />
+
+				<motion.video
 					src={videoSrc}
 					poster={videoPoster}
 					loop
@@ -63,23 +98,41 @@ export default function Card({
 					autoPlay
 					muted
 					className={css.video}
+					initial={{ scale: 1 }}
+					animate={{
+						scale: isOpened ? 1 : "var(--video-scale-hidden)",
+					}}
+					transition={transition}
 				/>
-			</div>
+			</motion.div>
 
 			{/* bottom */}
-			<div className={css.bottom}>
+			<motion.div
+				className={css.bottom}
+				initial={{ y: "var(--toolkit-video-section-height-initial)" }}
+				animate={{
+					y: isOpened
+						? "var(--toolkit-video-section-height)"
+						: "var(--toolkit-video-section-height-initial)",
+				}}
+				transition={transition}
+			>
+				<div className={css.line_container_bottom}>
+					<div className={css.line_v} />
+					<div className={css.line_h} />
+				</div>
+
 				<div className={css.container_box}>
 					<Image src={logoSrc} alt={logoAlt} className={css.logo} />
 				</div>
 				<p className={`f_body_2 ${css.company}`}>{company}</p>
 				<div className={css.invisible_box} />
-			</div>
-
-			{/* side line */}
-			<div className={css.side_line}>
-				<div className={css.line_vertical} />
-				<div className={css.line_horizontal} />
-			</div>
+			</motion.div>
 		</li>
 	);
 }
+
+const transition = {
+	duration: 0.75,
+	ease: cubicBezier(0.25, 1, 0.5, 1),
+};

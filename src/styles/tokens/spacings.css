@@ -35,6 +35,19 @@
 	--gap-section-S: 25vmin;
 	--gap-section-XS: 12vmin;
 	--gap-section-XXS: 6vmin;
+
+	/* ================================================== */
+	/* */
+	/* Toolkit section */
+	--toolkit-padding: 3vmin;
+	--toolkit-container-width: 8vmin;
+	--toolkit-video-section-height: 60vmin;
+	--toolkit-card-width: 100%;
+
+	--toolkit-card-height: calc(
+		var(--toolkit-padding) * 4 + var(--toolkit-container-width) * 2 +
+			var(--toolkit-video-section-height)
+	);
 }
 
 @media (width >= 480px) {
@@ -50,6 +63,11 @@
 		--gap-section-S: 11vmin;
 		--gap-section-XS: 10vmin;
 		--gap-section-XXS: 5vmin;
+
+		--toolkit-padding: 2.25vmin;
+		--toolkit-container-width: 5vmin;
+		--toolkit-video-section-height: 33vmin;
+		--toolkit-card-width: 42svw;
 	}
 }
 
@@ -61,5 +79,10 @@
 		--gap-section-S: 6.5vmax;
 		--gap-section-XS: 4.5vmax;
 		--gap-section-XXS: 1.75vmax;
+
+		--toolkit-padding: 1.25vmax;
+		--toolkit-container-width: 2.75vmax;
+		--toolkit-video-section-height: 20vmax;
+		--toolkit-card-width: 33vmax;
 	}
 }

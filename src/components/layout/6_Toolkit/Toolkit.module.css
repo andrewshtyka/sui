@@ -80,8 +80,14 @@
 
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: auto;
+	grid-auto-rows: var(--toolkit-card-height);
 	column-gap: 8svw;
 
-	row-gap: 18vmax;
+	row-gap: var(--padding-body);
+}
+
+@media (width >= 768px) {
+	.grid {
+		row-gap: 18vmax;
+	}
 }

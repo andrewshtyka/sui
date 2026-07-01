@@ -36,7 +36,7 @@ export default function LottieContainer({
 	const container = React.useRef(null);
 	const animRef = React.useRef(null);
 
-	// create instance of nimation (once)
+	// create instance of animation (once)
 	React.useEffect(() => {
 		if (!container.current) return;
 
