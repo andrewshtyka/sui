@@ -1,13 +1,35 @@
 .section {
+	--width: 2.75vmin;
+
 	color: var(--color-text-light);
 	padding-block: var(--gap-section-M);
 	padding-inline: var(--padding-body);
+	padding-block-end: 100svh;
 
 	& h2::selection,
 	& h3::selection,
 	& p::selection {
 		background-color: var(--color-bg-light);
 		color: var(--color-text-dark);
+	}
+}
+
+@media (width >= 480px) {
+	.section {
+		--width: 2vmin;
+	}
+}
+
+@media (width >= 768px) {
+	.section {
+		--width: 1.5vmin;
+	}
+}
+
+@media (width >= 992px) {
+	.section {
+		top: 0;
+		--width: 0.9vmax;
 	}
 }
 
@@ -44,7 +66,6 @@
 .box {
 	aspect-ratio: 1;
 
-	--width: 2.75vmin;
 	width: var(--width);
 	background-color: var(--color-bg-accent);
 
@@ -52,23 +73,8 @@
 	top: calc(var(--font-size-body-2) / 3);
 }
 
-@media (width >= 480px) {
-	.box {
-		--width: 2vmin;
-	}
-}
-
-@media (width >= 768px) {
-	.box {
-		--width: 1.5vmin;
-	}
-}
-
-@media (width >= 992px) {
-	.box {
-		top: 0;
-		--width: 0.9vmax;
-	}
+.container_cards {
+	position: relative;
 }
 
 /* ================================================== */
@@ -88,6 +94,98 @@
 
 @media (width >= 768px) {
 	.grid {
-		row-gap: 18vmax;
+		row-gap: 15vmax;
 	}
+}
+
+/* ================================================== */
+/* */
+/* Timeline */
+
+.container_timeline {
+	display: none;
+}
+
+@media (width >= 768px) {
+	.container_timeline {
+		display: initial;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+
+		height: 100%;
+	}
+}
+
+.timeline_current {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	/* height: 100%; */
+}
+
+.container_inner {
+	position: sticky;
+	z-index: 1;
+	left: 0;
+	top: 30%;
+
+	width: 100%;
+	height: var(--timeline-inner-height);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	--pseudo-position: -70%;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	&::before {
+		top: var(--pseudo-position);
+		background: linear-gradient(
+			to bottom,
+			var(--color-bg-dark) 0%,
+			var(--color-bg-dark) 75%,
+			transparent 100%
+		);
+	}
+
+	&::after {
+		bottom: var(--pseudo-position);
+		background: linear-gradient(
+			to top,
+			var(--color-bg-dark) 0%,
+			var(--color-bg-dark) 75%,
+			transparent 100%
+		);
+	}
+}
+
+.timeline_main {
+	height: 100%;
+}
+
+.timeline_box {
+	/* position: sticky; */
+	/* top: 0; */
+	/* left: 0; */
+	/* top: 50%; */
+	/* left: 50%; */
+	/* transform: translate(-50%, -50%); */
+
+	aspect-ratio: 1;
+	height: var(--width);
+	width: var(--width);
+
+	background-color: var(--color-bg-light);
 }

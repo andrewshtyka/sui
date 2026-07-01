@@ -48,6 +48,8 @@
 		var(--toolkit-padding) * 4 + var(--toolkit-container-width) * 2 +
 			var(--toolkit-video-section-height)
 	);
+
+	/* --timeline-inner-height: 18rem; */
 }
 
 @media (width >= 480px) {

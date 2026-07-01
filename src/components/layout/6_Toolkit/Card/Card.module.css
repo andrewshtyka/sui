@@ -179,7 +179,10 @@
 	background-color: var(--bg-color);
 
 	position: absolute;
-	top: calc(var(--toolkit-padding) * 2 + var(--toolkit-container-width) - var(--space-px));
+	top: calc(
+		var(--toolkit-padding) * 2 + var(--toolkit-container-width) -
+			var(--space-px)
+	);
 	left: 0;
 	width: 100%;
 

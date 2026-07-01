@@ -26,11 +26,14 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function DottedLine({ color = "var(--color-gray-800)" }) {
+export default function DottedLine({
+	color = "var(--color-gray-800)",
+	isHorizontal = true,
+}) {
 	return (
 		<svg
-			width="100%"
-			height="var(--space-1)"
+			width={isHorizontal ? "100%" : "var(--space-1)"}
+			height={isHorizontal ? "var(--space-1)" : "100%"}
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
 		>
@@ -38,10 +41,10 @@ export default function DottedLine({ color = "var(--color-gray-800)" }) {
 				stroke={color}
 				strokeWidth="2"
 				strokeDasharray="2, 10"
-				x1="0"
-				y1="1"
-				x2="100%"
-				y2="1"
+				x1={isHorizontal ? "0" : "1"}
+				y1={isHorizontal ? "1" : "0"}
+				x2={isHorizontal ? "100%" : "1"}
+				y2={isHorizontal ? "1" : "100%"}
 			></line>
 		</svg>
 	);
