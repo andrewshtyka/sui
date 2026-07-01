@@ -29,43 +29,58 @@ import React from "react";
 
 // #endregion ===========================
 
-const timelineInnerHeight = 300;
-
 export default function Toolkit() {
-	const timelineRef = React.useRef(null);
-	const { scrollYProgress } = useScroll({
-		target: timelineRef,
-		offset: ["start 35%", "end 61%"],
-	});
-
+	// get container height
 	const [containerHeight, setContainerHeight] = React.useState(0);
 	const containerRef = React.useRef(null);
 	React.useEffect(() => {
 		if (!containerRef.current) return;
-		setContainerHeight(containerRef.current.getBoundingClientRect().height);
 
 		function getNextHeight() {
 			setContainerHeight(
 				containerRef.current.getBoundingClientRect().height
 			);
 		}
+
+		getNextHeight();
 		window.addEventListener("resize", getNextHeight);
 		return () => window.removeEventListener("resize", getNextHeight);
 	}, []);
 
-	// const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-	// const timelineClipPath = useTransform(progress, (t) => {
-	// 	const top = `calc(${t * containerHeight}px - var(--timeline-inner-height) * ${t})`;
-	// 	const bottom = `calc(${(1 - t) * containerHeight}px - var(--timeline-inner-height) * ${1 - t})`;
-	// 	return `inset(${top} 0% ${bottom} 0%)`;
-	// });
+	// get viewport height
+	const [viewportHeight, setViewportHeight] = React.useState(0);
+	React.useEffect(() => {
+		function updateVH() {
+			setViewportHeight(window.innerHeight);
+		}
+		updateVH();
+		window.addEventListener("resize", updateVH);
+		return () => window.removeEventListener("resize", updateVH);
+	}, []);
+
+	// count offset (to make 'clipPath' for timeline_main match 'top' for inner container_inner)
+	const isSmallHeight = viewportHeight / 2 < 300;
+	const innerHeightTimelinePx = isSmallHeight
+		? viewportHeight / 2
+		: viewportHeight / 3;
+	const startPercent = isSmallHeight ? 25 : 35;
+	const endPercent =
+		viewportHeight > 0
+			? startPercent + (innerHeightTimelinePx / viewportHeight) * 100
+			: startPercent;
+
+	const timelineRef = React.useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: timelineRef,
+		offset: [`start ${startPercent}%`, `end ${endPercent}%`],
+	});
 
 	const timelineClipPath = useTransform(
 		scrollYProgress,
 		[0, 1],
 		[
-			`inset(0px 0% ${containerHeight - containerHeight / 12}px 0px)`,
-			`inset(${containerHeight - containerHeight / 12}px 0px 0px 0px)`,
+			`inset(0px 0% ${containerHeight - innerHeightTimelinePx}px 0px)`,
+			`inset(${containerHeight - innerHeightTimelinePx}px 0px 0px 0px)`,
 		]
 	);
 
@@ -108,7 +123,8 @@ export default function Toolkit() {
 							className={css.container_inner}
 							layout={true}
 							style={{
-								"--timeline-inner-height": `${containerHeight / 12}px`,
+								"--timeline-inner-height": `${innerHeightTimelinePx}px`,
+								"--timeline-offset-top": `${startPercent}%`,
 							}}
 						>
 							<div className={css.timeline_box} />
