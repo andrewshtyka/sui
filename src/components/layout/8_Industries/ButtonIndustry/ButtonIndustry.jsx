@@ -9,6 +9,7 @@
 // assets
 
 // components
+import Image from "next/image";
 
 // constants
 
@@ -19,7 +20,6 @@
 // providers / context
 
 // styles
-import Image from "next/image";
 import css from "./ButtonIndustry.module.css";
 
 // utility

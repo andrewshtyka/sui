@@ -14,14 +14,14 @@ import Card from "./Card/Card";
 // constants
 
 // data
-import css from "./Industries.module.css";
+import { dataIndustries } from "@/data/dataIndustries";
 
 // hooks
 
 // providers / context
 
 // styles
-import { dataIndustries } from "@/data/dataIndustries";
+import css from "./Industries.module.css";
 
 // utility
 import React from "react";
