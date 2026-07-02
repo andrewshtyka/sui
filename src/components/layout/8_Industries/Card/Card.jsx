@@ -56,7 +56,11 @@ export default function Card({
 							backgroundColor="transparent"
 						/>
 					</span>
-					<span className="f_body_1">{title}</span>
+					<span className={`f_body_1 ${css.title}`}>{title}</span>
+				</span>
+
+				<span className={css.container_line_mobile}>
+					<DottedLine />
 				</span>
 
 				<ul className={css.container_logos}>
@@ -70,6 +74,7 @@ export default function Card({
 			<span className={css.container_line_top}>
 				<DottedLine />
 			</span>
+
 			{/* texts list */}
 			<ul className={css.list}>
 				{textArr.map((text, i) => (

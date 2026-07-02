@@ -1,6 +1,7 @@
 .section {
 	height: 100svh;
 	width: 100svw;
+	background-color: var(--color-bg-dark);
 }
 
 .container {

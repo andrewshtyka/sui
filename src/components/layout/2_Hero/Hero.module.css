@@ -49,6 +49,7 @@
 .subtitle {
 	text-align: center;
 	max-width: 25ch;
+	mix-blend-mode: difference;
 }
 
 .container_buttons {

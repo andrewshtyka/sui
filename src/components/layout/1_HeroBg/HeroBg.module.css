@@ -5,6 +5,7 @@
 	width: 100svw;
 	height: 200svh;
 	overflow-x: hidden;
+	background-color: var(--color-bg-dark);
 }
 
 .container_balls {

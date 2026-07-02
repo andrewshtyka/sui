@@ -6,6 +6,9 @@
 	padding-block: var(--gap-section-M);
 	padding-block-end: var(--space-1);
 
+	background-color: var(--color-bg-dark);
+
+
 	& h2::selection,
 	& h3::selection,
 	& p::selection {
