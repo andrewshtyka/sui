@@ -4,7 +4,13 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+	motion,
+	useScroll,
+	useSpring,
+	useTransform,
+	useVelocity,
+} from "motion/react";
 
 // assets
 
@@ -84,6 +90,29 @@ export default function Toolkit() {
 		]
 	);
 
+	// path animation (depend on scroll power)
+	const pathScrollVelocity = useVelocity(scrollYProgress);
+	const pathRawHeightTop = useTransform(
+		pathScrollVelocity,
+		[0, 1],
+		[0, innerHeightTimelinePx / 4],
+		{ clamp: true }
+	);
+	const pathHeightTop = useSpring(pathRawHeightTop, {
+		stiffness: 300,
+		damping: 30,
+	});
+	const pathRawHeightBottom = useTransform(
+		pathScrollVelocity,
+		[-1, 0],
+		[innerHeightTimelinePx / 4, 0],
+		{ clamp: true }
+	);
+	const pathHeightBottom = useSpring(pathRawHeightBottom, {
+		stiffness: 300,
+		damping: 30,
+	});
+
 	return (
 		<section className={css.section}>
 			<h2 className={`f_h2 f_center ${css.title}`}>
@@ -113,8 +142,9 @@ export default function Toolkit() {
 					))}
 				</ul>
 
-				{/* line mid */}
+				{/* timeline */}
 				<div className={css.container_timeline}>
+					{/* visible part */}
 					<div
 						className={css.timeline_current}
 						style={{ height: containerHeight }}
@@ -127,10 +157,22 @@ export default function Toolkit() {
 								"--timeline-offset-top": `${startPercent}%`,
 							}}
 						>
+							{/* path */}
+							<div className={css.container_path}>
+								<motion.div
+									className={`${css.timeline_path} ${css.top}`}
+									style={{ height: pathHeightTop }}
+								/>
+								<motion.div
+									className={`${css.timeline_path} ${css.bottom}`}
+									style={{ height: pathHeightBottom }}
+								/>
+							</div>
 							<div className={css.timeline_box} />
 						</motion.div>
 					</div>
 
+					{/* dashed line on bg */}
 					<motion.div
 						ref={timelineRef}
 						className={css.timeline_main}

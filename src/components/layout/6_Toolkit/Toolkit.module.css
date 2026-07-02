@@ -73,6 +73,12 @@
 	top: calc(var(--font-size-body-2) / 3);
 }
 
+@media (width >= 992px) {
+	.box {
+		top: 0;
+	}
+}
+
 .container_cards {
 	position: relative;
 }
@@ -134,6 +140,7 @@
 	height: var(--timeline-inner-height);
 
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
@@ -183,4 +190,33 @@
 	width: var(--width);
 
 	background-color: var(--color-bg-light);
+
+	position: absolute;
+}
+
+.container_path {
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	transform: translateY(-50%);
+
+	aspect-ratio: 1;
+	height: var(--width);
+	width: var(--width);
+}
+
+.timeline_path {
+	background-color: var(--color-bg-accent);
+	width: var(--space-1);
+
+	position: absolute;
+	left: 0%;
+}
+
+.top {
+	bottom: 90%;
+}
+
+.bottom {
+	top: 90%;
 }
