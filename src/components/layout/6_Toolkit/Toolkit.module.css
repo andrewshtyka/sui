@@ -2,9 +2,9 @@
 	--width: 2.75vmin;
 
 	color: var(--color-text-light);
-	padding-block: var(--gap-section-M);
 	padding-inline: var(--padding-body);
-	padding-block-end: 100svh;
+	padding-block: var(--gap-section-M);
+	padding-block-end: var(--space-1);
 
 	& h2::selection,
 	& h3::selection,

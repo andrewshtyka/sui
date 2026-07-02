@@ -71,7 +71,7 @@ export default function Card({
 			{/* top */}
 			<div className={css.top}>
 				<div className={`f_mono_title ${css.container_box}`}>
-					0{num}
+					<p>0{num}</p>
 				</div>
 				<h3 className={`f_mono_title f_uppercase`}>{title}</h3>
 				<div className={css.invisible_box} />
