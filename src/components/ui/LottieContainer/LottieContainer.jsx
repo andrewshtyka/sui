@@ -31,6 +31,7 @@ export default function LottieContainer({
 	animationData,
 	isInView = false,
 	height = "var(--font-size-h3)",
+	backgroundColor = "var(--color-bg-accent)",
 	...rest
 }) {
 	const container = React.useRef(null);
@@ -71,7 +72,7 @@ export default function LottieContainer({
 		<span
 			ref={container}
 			className={css.container}
-			style={{ height }}
+			style={{ height, backgroundColor }}
 			{...rest}
 		/>
 	);

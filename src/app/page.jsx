@@ -15,6 +15,7 @@ import About from "@/components/layout/4_About/About";
 import AboutList from "@/components/layout/5_AboutList/AboutList";
 import Toolkit from "@/components/layout/6_Toolkit/Toolkit";
 import SuiAscii from "@/components/layout/7_SuiAscii/SuiAscii";
+import Industries from "@/components/layout/8_Industries/Industries";
 
 // constants
 
@@ -39,7 +40,9 @@ export default function HomePage() {
 			<About />
 			<AboutList />
 			<Toolkit />
+
 			<SuiAscii />
+			<Industries />
 		</>
 	);
 }

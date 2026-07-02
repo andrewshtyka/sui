@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 
 // assets
 
@@ -40,11 +40,21 @@ export default function SuiAscii() {
 	const ref = React.useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,
-		offset: ["start end", "end 50%"],
+		offset: ["start end", "end start"],
 	});
-	const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
-	const y = useTransform(scrollYProgress, [0, 1], ["20svh", "50svh"]);
-	const opacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 1, 0.25]);
+	// const smoothProgress = useSpring(scrollYProgress, {
+	// 	stiffness: 300,
+	// 	damping: 40,
+	// 	mass: 0.5,
+	// });
+
+	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1.25, 1]);
+	const y = useTransform(
+		scrollYProgress,
+		[0, 0.5, 1],
+		["20svh", "40svh", "100svh"]
+	);
+	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
 
 	return (
 		<section className={css.section}>

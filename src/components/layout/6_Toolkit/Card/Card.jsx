@@ -9,6 +9,7 @@ import {
 	useMotionValueEvent,
 	useScroll,
 	cubicBezier,
+	useInView,
 } from "motion/react";
 
 // assets
@@ -44,12 +45,12 @@ export default function Card({
 }) {
 	const [isOpened, setIsOpened] = React.useState(false);
 	const ref = React.useRef(null);
-	const progressRef = React.useRef(0);
 	const { scrollYProgress } = useScroll({
 		target: ref,
 		offset: ["start 60%", "start 60%"],
 	});
 
+	const progressRef = React.useRef(0);
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
 		progressRef.current = latest;
 
@@ -59,6 +60,20 @@ export default function Card({
 			setIsOpened(false);
 		}
 	});
+
+	// control video playback (play only when in viewport)
+	const videoRef = React.useRef(null);
+	const isVideoInView = useInView(videoRef);
+	React.useEffect(() => {
+		const video = videoRef.current;
+		if (!video) return;
+
+		if (isVideoInView) {
+			video.play().catch(() => {});
+		} else {
+			video.pause();
+		}
+	}, [isVideoInView]);
 
 	const gridColumnClass = isOdd ? `${css.is_odd}` : `${css.is_even}`;
 
@@ -91,6 +106,7 @@ export default function Card({
 				<div className={css.line_container_mid} />
 
 				<motion.video
+					ref={videoRef}
 					src={videoSrc}
 					poster={videoPoster}
 					loop

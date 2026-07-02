@@ -1,5 +1,4 @@
 .container {
 	display: inline-flex;
 	aspect-ratio: 1;
-	background-color: var(--color-bg-accent);
 }

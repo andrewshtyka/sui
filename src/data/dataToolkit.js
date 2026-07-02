@@ -1,11 +1,3 @@
-// posters
-import poster_1 from "../../public/videos/toolkit/poster_1.webp";
-import poster_2 from "../../public/videos/toolkit/poster_2.webp";
-import poster_3 from "../../public/videos/toolkit/poster_3.webp";
-import poster_4 from "../../public/videos/toolkit/poster_4.webp";
-import poster_5 from "../../public/videos/toolkit/poster_5.webp";
-import poster_6 from "../../public/videos/toolkit/poster_6.webp";
-
 // logos
 import logo_1 from "../../public/images/toolkit/logos/sui.svg";
 import logo_2 from "../../public/images/toolkit/logos/walrus.svg";

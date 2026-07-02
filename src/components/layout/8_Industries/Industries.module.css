@@ -1,10 +1,13 @@
 .section {
 	--width: 2.75vmin;
 
-	color: var(--color-text-light);
+	position: relative;
+
+	color: var(--color-text-dark);
 	padding-inline: var(--padding-body);
 	padding-block: var(--gap-section-M);
-	padding-block-end: var(--space-1);
+
+	background-color: var(--color-bg-light);
 
 	& h2::selection,
 	& h3::selection,
@@ -35,6 +38,8 @@
 
 .title {
 	margin-block-end: var(--gap-section-XS);
+	max-width: 20ch;
+	margin-inline: auto;
 }
 
 .subtitle {
@@ -79,27 +84,20 @@
 	}
 }
 
-.container_cards {
-	position: relative;
-}
-
 /* ================================================== */
 /* */
 /* Grid */
 
 .grid {
-	padding-block-start: 8vmax;
-
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-auto-rows: var(--toolkit-card-height);
-	column-gap: 8svw;
+	grid-template-columns: 1fr;
+	gap: calc(var(--padding-body) * 0.5);
 
-	row-gap: var(--padding-body);
+	margin-block-end: var(--gap-section-M);
 }
 
 @media (width >= 768px) {
 	.grid {
-		row-gap: 15vmax;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }

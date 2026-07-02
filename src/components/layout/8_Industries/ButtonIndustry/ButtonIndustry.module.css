@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+}
+
+.container_icon {
+	display: grid;
+	place-content: center;
+	aspect-ratio: 1;
+	background-color: var(--color-bg-accent);
+}
+
+.img {
+    filter: invert();
+}
+
+.text {
+	display: flex;
+	padding: calc(var(--padding-body) * 0.4);
+}
