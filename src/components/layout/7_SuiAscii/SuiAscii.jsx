@@ -40,7 +40,7 @@ export default function SuiAscii() {
 	const ref = React.useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,
-		offset: ["start end", "end start"],
+		offset: ["start end", "end 50%"],
 	});
 	const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
 	const y = useTransform(scrollYProgress, [0, 1], ["20svh", "50svh"]);
@@ -60,7 +60,6 @@ export default function SuiAscii() {
 						className={css.img}
 					/>
 				)}
-
 				{imagesAnimated.map(({ id, src, alt }, i) => (
 					<MotionImage
 						key={id}

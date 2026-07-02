@@ -3,7 +3,7 @@
 /* BASE */
 
 html {
-	scrollbar-width: none; 
+	scrollbar-width: none;
 }
 
 body {
@@ -18,5 +18,5 @@ body {
 /* APPEARANCE */
 
 ::selection {
-  background-color: var(--color-bg-dark);
+	background-color: var(--color-bg-dark);
 }
