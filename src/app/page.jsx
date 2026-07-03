@@ -26,7 +26,7 @@ import GetStarted from "@/components/layout/9_GetStarted/GetStarted";
 // providers / context
 
 // styles
-// import css from '.'
+import css from "./page.module.css";
 
 // utility
 import React from "react";
@@ -43,10 +43,12 @@ export default function HomePage() {
 			<AboutList />
 			<Toolkit />
 
-			<SuiAscii />
-			<Industries />
-			<GetStarted />
-			<Footer />
+			<div className={css.container}>
+				<SuiAscii />
+				<Industries />
+				<GetStarted />
+				<Footer />
+			</div>
 		</>
 	);
 }

@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 // assets
 
@@ -42,11 +42,6 @@ export default function SuiAscii() {
 		target: ref,
 		offset: ["start end", "end start"],
 	});
-	// const smoothProgress = useSpring(scrollYProgress, {
-	// 	stiffness: 300,
-	// 	damping: 40,
-	// 	mass: 0.5,
-	// });
 
 	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1.25, 1]);
 	const y = useTransform(
@@ -67,7 +62,7 @@ export default function SuiAscii() {
 					<Image
 						src={imageBase.src}
 						alt={imageBase.alt}
-						className={css.img}
+						className={`${css.img} ${css.img_base}`}
 					/>
 				)}
 				{imagesAnimated.map(({ id, src, alt }, i) => (

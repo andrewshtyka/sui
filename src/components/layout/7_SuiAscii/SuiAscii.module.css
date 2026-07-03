@@ -13,7 +13,6 @@
 	margin-inline: auto;
 
 	position: relative;
-	overflow-x: hidden;
 }
 
 .img {
@@ -27,4 +26,16 @@
 	will-change: transform;
 	backface-visibility: hidden;
 	transform: translateZ(0);
+}
+
+.img_base {
+	filter: invert();
+	opacity: 0.75;
+}
+
+@media (width >= 768px) {
+	.img_base {
+		filter: none;
+		opacity: 1;
+	}
 }
