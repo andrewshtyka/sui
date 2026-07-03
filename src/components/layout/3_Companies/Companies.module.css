@@ -4,6 +4,9 @@
 
 	color: var(--color-text-dark);
 	margin-block-end: var(--gap-section-M);
+
+	width: 100svw;
+	overflow-x: hidden;
 }
 
 .title {

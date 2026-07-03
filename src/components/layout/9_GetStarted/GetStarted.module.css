@@ -19,7 +19,7 @@
 	display: block;
 	max-width: 20ch;
 	margin-inline: auto;
-	margin-block-end: var(--gap-section-S);
+	margin-block-end: calc(var(--gap-section-XS) * 1.75);
 }
 
 @media (width >= 768px) {
