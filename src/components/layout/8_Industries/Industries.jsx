@@ -40,7 +40,7 @@ export default function Industries() {
 				<p className={`f_body_2 f_center`}>{dataIndustries.subtitle}</p>
 			</div>
 
-			<ul className={css.grid}>
+			<ul className={css.grid_cards}>
 				{dataIndustries.items.map(
 					({ id, title, logoTitle, logoArr, textArr, btnTitle }) => (
 						<Card

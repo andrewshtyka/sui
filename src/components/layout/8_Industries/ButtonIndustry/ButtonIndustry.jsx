@@ -28,8 +28,6 @@ import React from "react";
 // #endregion ===========================
 
 export default function ButtonIndustry({ icon, children }) {
-	console.log(icon);
-
 	return (
 		<span className={css.container}>
 			<span className={css.container_icon}>

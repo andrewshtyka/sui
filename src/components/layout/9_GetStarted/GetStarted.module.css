@@ -1,0 +1,42 @@
+.section {
+	position: relative;
+
+	color: var(--color-text-dark);
+	padding-inline: var(--padding-body);
+	/* padding-block: var(--gap-section-M); */
+
+	background-color: var(--color-bg-light);
+
+	& h2::selection,
+	& h3::selection,
+	& p::selection {
+		background-color: var(--color-bg-light);
+		color: var(--color-text-dark);
+	}
+}
+
+.title {
+	display: block;
+	max-width: 20ch;
+	margin-inline: auto;
+	margin-block-end: var(--gap-section-S);
+}
+
+@media (width >= 480px) {
+	.title {
+		display: none;
+	}
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+
+	row-gap: var(--padding-body);
+}
+
+@media (width >= 480px) {
+	.list {
+		row-gap: var(--space-0);
+	}
+}

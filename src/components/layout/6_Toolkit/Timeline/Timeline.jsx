@@ -91,7 +91,7 @@ export default function Timeline({ containerRef }) {
 	const pathRawHeightTop = useTransform(
 		pathScrollVelocity,
 		[0, 1],
-		[0, innerHeightTimelinePx / 4],
+		[0, innerHeightTimelinePx / 3],
 		{ clamp: true }
 	);
 	const pathHeightTop = useSpring(pathRawHeightTop, {
@@ -101,7 +101,7 @@ export default function Timeline({ containerRef }) {
 	const pathRawHeightBottom = useTransform(
 		pathScrollVelocity,
 		[-1, 0],
-		[innerHeightTimelinePx / 4, 0],
+		[innerHeightTimelinePx / 3, 0],
 		{ clamp: true }
 	);
 	const pathHeightBottom = useSpring(pathRawHeightBottom, {

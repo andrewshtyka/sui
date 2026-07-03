@@ -5,7 +5,8 @@
 
 	color: var(--color-text-dark);
 	padding-inline: var(--padding-body);
-	padding-block: var(--gap-section-M);
+	padding-block-start: var(--gap-section-M);
+	margin-block-end: var(--gap-section-M);
 
 	background-color: var(--color-bg-light);
 
@@ -37,9 +38,9 @@
 }
 
 .title {
-	margin-block-end: var(--gap-section-XS);
 	max-width: 20ch;
 	margin-inline: auto;
+	margin-block-end: var(--gap-section-XS);
 }
 
 .subtitle {
@@ -50,7 +51,7 @@
 	column-gap: 0.5em;
 	align-items: flex-start;
 
-	margin-block-end: 11vmax;
+	margin-block-end: calc(var(--gap-section-S) * 1.75);
 
 	& p {
 		max-width: 25ch;
@@ -86,18 +87,16 @@
 
 /* ================================================== */
 /* */
-/* Grid */
+/* Grid cards */
 
-.grid {
+.grid_cards {
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: calc(var(--padding-body) * 0.5);
-
-	margin-block-end: var(--gap-section-M);
 }
 
 @media (width >= 768px) {
-	.grid {
+	.grid_cards {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
