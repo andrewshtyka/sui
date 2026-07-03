@@ -8,6 +8,7 @@
 // assets
 
 // components
+import Footer from "@/components/layout/10_Footer/Footer";
 import HeroBg from "@/components/layout/1_HeroBg/HeroBg";
 import Hero from "@/components/layout/2_Hero/Hero";
 import Companies from "@/components/layout/3_Companies/Companies";
@@ -45,6 +46,7 @@ export default function HomePage() {
 			<SuiAscii />
 			<Industries />
 			<GetStarted />
+			<Footer />
 		</>
 	);
 }

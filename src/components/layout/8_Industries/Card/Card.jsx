@@ -56,7 +56,7 @@ export default function Card({
 							backgroundColor="transparent"
 						/>
 					</span>
-					<span className={`f_body_1 ${css.title}`}>{title}</span>
+					<h3 className={`f_body_1 ${css.title}`}>{title}</h3>
 				</span>
 
 				<span className={css.container_line_mobile}>
@@ -80,7 +80,7 @@ export default function Card({
 				{textArr.map((text, i) => (
 					<li key={i} className={css.item}>
 						<Bullet />
-						<span className={`f_body_2 ${css.text}`}>{text}</span>
+						<p className={`f_body_2 ${css.text}`}>{text}</p>
 					</li>
 				))}
 			</ul>

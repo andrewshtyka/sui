@@ -3,15 +3,15 @@
 
 	color: var(--color-text-dark);
 	padding-inline: var(--padding-body);
-	/* padding-block: var(--gap-section-M); */
+	margin-block-end: var(--gap-section-M);
 
 	background-color: var(--color-bg-light);
 
 	& h2::selection,
 	& h3::selection,
 	& p::selection {
-		background-color: var(--color-bg-light);
-		color: var(--color-text-dark);
+		background-color: var(--color-bg-dark);
+		color: var(--color-text-light);
 	}
 }
 

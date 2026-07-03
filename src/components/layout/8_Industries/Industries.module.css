@@ -13,8 +13,8 @@
 	& h2::selection,
 	& h3::selection,
 	& p::selection {
-		background-color: var(--color-bg-light);
-		color: var(--color-text-dark);
+		background-color: var(--color-bg-dark);
+		color: var(--color-text-light);
 	}
 }
 

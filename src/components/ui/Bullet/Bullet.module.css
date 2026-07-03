@@ -1,6 +1,5 @@
 .container_bullet {
 	display: flex;
-	width: calc(var(--padding-body) * 1);
 	position: relative;
 }
 
@@ -10,9 +9,7 @@
 }
 
 .vertical {
-	width: var(--space-1);
 	height: 50%;
-	background-color: var(--color-bg-accent);
 }
 
 .horizontal {
@@ -20,6 +17,4 @@
 	left: 0;
 	top: 50%;
 	width: 100%;
-	height: var(--space-1);
-	background-color: var(--color-bg-accent);
 }

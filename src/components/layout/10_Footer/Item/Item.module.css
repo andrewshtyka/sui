@@ -1,0 +1,11 @@
+.content {
+	padding-block: 0.2em;
+
+	display: flex;
+	align-items: center;
+	column-gap: 0.4em;
+}
+
+.text {
+	color: var(--color-gray-600);
+}

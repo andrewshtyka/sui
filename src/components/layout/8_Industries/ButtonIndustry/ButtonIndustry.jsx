@@ -33,7 +33,7 @@ export default function ButtonIndustry({ icon, children }) {
 			<span className={css.container_icon}>
 				<Image src={icon} alt="" className={css.img} />
 			</span>
-			<span className={`f_body_3 ${css.text}`}>{children}</span>
+			<p className={`f_body_3 ${css.text}`}>{children}</p>
 		</span>
 	);
 }

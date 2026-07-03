@@ -26,11 +26,34 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function Bullet({ height = "calc(var(--font-size-body-2) * 0.75)" }) {
+export default function Bullet({
+	height = 0.75,
+	width = 1,
+	color = "var(--color-bg-accent)",
+	strokeSize = 1,
+}) {
 	return (
-		<span className={css.container_bullet} style={{ height }}>
-			<span className={css.vertical} />
-			<span className={css.horizontal} />
+		<span
+			className={css.container_bullet}
+			style={{
+				height: `calc(var(--font-size-body-2) * ${height})`,
+				width: `calc(var(--padding-body) * ${width})`,
+			}}
+		>
+			<span
+				className={css.vertical}
+				style={{
+					backgroundColor: color,
+					width: `calc(var(--space-1) * ${strokeSize})`,
+				}}
+			/>
+			<span
+				className={css.horizontal}
+				style={{
+					backgroundColor: color,
+					height: `calc(var(--space-1) * ${strokeSize})`,
+				}}
+			/>
 		</span>
 	);
 }
