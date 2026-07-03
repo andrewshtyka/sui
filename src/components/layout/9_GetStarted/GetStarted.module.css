@@ -22,7 +22,7 @@
 	margin-block-end: var(--gap-section-S);
 }
 
-@media (width >= 480px) {
+@media (width >= 768px) {
 	.title {
 		display: none;
 	}
@@ -35,7 +35,7 @@
 	row-gap: var(--padding-body);
 }
 
-@media (width >= 480px) {
+@media (width >= 768px) {
 	.list {
 		row-gap: var(--space-0);
 	}

@@ -16,7 +16,7 @@
 	clip-path: var(--isMobile);
 }
 
-@media (width >= 480px) {
+@media (width >= 768px) {
 	.container {
 		clip-path: var(--isDesktop);
 		--gap: calc(var(--padding-body) * 0.5);
