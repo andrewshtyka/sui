@@ -14,8 +14,11 @@
 
 	color: transparent;
 
+	--text-x-mobile: 50%;
+	--text-y-mobile: 50%;
+
 	background-image: radial-gradient(
-		circle at var(--text-x) var(--text-y),
+		circle at var(--text-x-mobile) var(--text-y-mobile),
 		var(--color-text-light) 0%,
 		var(--color-text-light) 44%,
 		var(--color-text-accent) 85%,
@@ -34,9 +37,16 @@
 	max-width: 5ch;
 }
 
-@media (width >= 992px) {
+@media (width >= 1200px) {
 	.title {
 		max-width: none;
+		background-image: radial-gradient(
+			circle at var(--text-x) var(--text-y),
+			var(--color-text-light) 0%,
+			var(--color-text-light) 44%,
+			var(--color-text-accent) 85%,
+			transparent 95%
+		);
 	}
 }
 
