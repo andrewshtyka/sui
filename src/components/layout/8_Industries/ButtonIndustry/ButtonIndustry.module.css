@@ -45,6 +45,7 @@
 .img_1,
 .img_2 {
 	filter: invert();
+
 	/* height: 100%; */
 	/* width: 100%; */
 }

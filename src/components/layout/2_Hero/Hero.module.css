@@ -23,6 +23,8 @@
 
 	row-gap: 15vmin;
 	padding-block-end: 4vmin;
+
+	width: 100%;
 }
 
 @media (width >= 480px) {
