@@ -1,5 +1,5 @@
 .card {
-	background-color: var(--color-bg-light-dimmed);
+	/* background-color: var(--color-bg-light-dimmed); */
 
 	--gap-card-main: calc(var(--padding-body) * 1);
 
@@ -94,6 +94,7 @@
 	align-items: center;
 	column-gap: calc(var(--padding-body) * 0.75);
 	padding-inline-end: calc(var(--padding-body) * 0.25);
+	opacity: 0.3;
 }
 
 .container_inner_logo {
@@ -105,7 +106,6 @@
 .img {
 	width: 100%;
 	height: 100%;
-	opacity: 0.3;
 }
 
 .container_line_top {

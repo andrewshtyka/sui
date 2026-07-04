@@ -33,6 +33,8 @@ import React from "react";
 
 // #endregion ===========================
 
+const MotionLink = motion.create(Link);
+
 export default function Card({
 	title,
 	logoTitle,
@@ -41,24 +43,28 @@ export default function Card({
 	btnTitle,
 	icon,
 }) {
-	const [node, setNode] = React.useState(null);
-
+	const [isHovered, setIsHovered] = React.useState(false);
 	const ref = React.useRef(null);
-	// const isInView = useInView(ref);
-
-	const refCallback = React.useCallback((el) => {
-		setNode(el);
-	}, []);
+	const isInView = useInView(ref);
 
 	return (
-		<Link ref={refCallback} href="#" className={css.card}>
+		<MotionLink
+			ref={ref}
+			href="#"
+			className={css.card}
+			onMouseEnter={() => setIsHovered(true)}
+			onFocus={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+			onBlur={() => setIsHovered(false)}
+			{...anim(variantsCard, isHovered)}
+		>
 			{/* top */}
 			<span className={css.top}>
 				<span className={css.container_title}>
 					<span className={css.container_logoTitle}>
 						<LottieContainer
 							animationData={logoTitle}
-							// isInView={isInView}
+							isInView={isInView}
 							height="100%"
 							backgroundColor="transparent"
 						/>
@@ -70,13 +76,16 @@ export default function Card({
 					<DottedLine />
 				</span>
 
-				<ul className={css.container_logos}>
+				<motion.ul
+					className={css.container_logos}
+					{...anim(variantsLogos, isHovered)}
+				>
 					{logoArr.map((src, i) => (
 						<li key={i} className={css.container_inner_logo}>
 							<Image src={src} alt="" className={css.img} />
 						</li>
 					))}
-				</ul>
+				</motion.ul>
 			</span>
 			<span className={css.container_line_top}>
 				<DottedLine />
@@ -94,9 +103,46 @@ export default function Card({
 			<span className={css.container_line_bottom}>
 				<DottedLine />
 			</span>
-			<ButtonIndustry icon={icon} containerRef={node}>
+			<ButtonIndustry icon={icon} isHoveredCard={isHovered}>
 				{btnTitle}
 			</ButtonIndustry>
-		</Link>
+		</MotionLink>
 	);
+}
+
+const variantsCard = {
+	initial: {
+		backgroundColor: "var(--color-bg-light-dimmed)",
+	},
+	animate: {
+		hover: {
+			backgroundColor: "var(--color-gray-920)",
+		},
+		blur: {
+			backgroundColor: "var(--color-bg-light-dimmed)",
+		},
+	},
+};
+
+const variantsLogos = {
+	initial: {
+		opacity: 0.3,
+	},
+	animate: {
+		hover: {
+			opacity: 1,
+		},
+		blur: {
+			opacity: 0.3,
+		},
+	},
+};
+
+function anim(obj, state) {
+	return {
+		variants: obj,
+		initial: obj.initial,
+		animate: state ? obj.animate.hover : obj.animate.blur,
+		transition: obj.transition,
+	};
 }
