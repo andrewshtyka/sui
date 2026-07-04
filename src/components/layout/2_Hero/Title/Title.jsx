@@ -42,10 +42,34 @@ export default function Title({ children }) {
 				"--text-x": mouseX,
 				"--text-y": mouseY,
 			}}
+			{...anim(variantsText)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			{children}
 		</motion.h1>
 	);
+}
+
+const variantsText = {
+	initial: {
+		opacity: 0,
+	},
+	animate: {
+		opacity: 1,
+	},
+	transition: {
+		delay: 0.25,
+		duration: 1.5,
+		ease: "easeInOut",
+	},
+};
+
+function anim(obj) {
+	return {
+		variants: obj,
+		initial: obj.initial,
+		animate: obj.animate,
+		transition: obj.transition,
+	};
 }

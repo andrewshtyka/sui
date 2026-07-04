@@ -118,5 +118,5 @@ export const dataFooter = {
 			alt: "X",
 		},
 	],
-	text: "A reverse-engineered website. Made for practice.",
+	text: "A reverse-engineered website. For training purposes.",
 };

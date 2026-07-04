@@ -65,6 +65,10 @@
 	opacity: 0.5;
 	column-gap: var(--col-gap);
 	padding-inline-end: var(--col-gap);
+
+	/* transform: translateZ(0); */
+	backface-visibility: hidden;
+	/* will-change: transform; */
 }
 
 /* ================================================== */

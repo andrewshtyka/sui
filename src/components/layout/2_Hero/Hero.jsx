@@ -1,10 +1,13 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from "motion/react";
+import { cubicBezier, motion } from "motion/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 
 // assets
 
@@ -30,26 +33,80 @@ import React from "react";
 
 // #endregion ===========================
 
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(SplitText);
+
 export default function Hero() {
+	// animate text
+	const textRef = React.useRef(null);
+	useGSAP(() => {
+		const textEl = textRef.current;
+		if (!textEl) return;
+
+		SplitText.create(textEl, {
+			type: "lines",
+			mask: "lines",
+			autoSplit: true,
+			onSplit(self) {
+				return gsap.from(self.lines, {
+					delay: 1,
+					duration: 1.5,
+					y: 100,
+					autoAlpha: 0,
+					stagger: 0.1,
+					ease: "power3.out",
+				});
+			},
+		});
+	});
+
 	return (
 		<section className={css.section}>
 			<Title>{dataHero.title}</Title>
 			<Blur />
 
 			<div className={css.bottom}>
-				<p className={`f_body_1 ${css.subtitle}`}>
+				<p ref={textRef} className={`f_body_1 ${css.subtitle}`}>
 					{dataHero.subtitle}
 				</p>
 
-				<div className={css.container_buttons}>
+				<motion.div
+					className={css.container_buttons}
+					{...anim(variantsButtons)}
+				>
 					<ButtonPrimary color="dark">
 						{dataHero.btn.dark}
 					</ButtonPrimary>
 					<ButtonPrimary color="light">
 						{dataHero.btn.light}
 					</ButtonPrimary>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
+}
+
+const variantsButtons = {
+	initial: {
+		y: "75%",
+		opacity: 0,
+	},
+	animate: {
+		y: "0",
+		opacity: 1,
+	},
+	transition: {
+		duration: 1,
+		delay: 1.5,
+		ease: cubicBezier(0.25, 0, 0.5, 1),
+	},
+};
+
+function anim(obj) {
+	return {
+		variants: obj,
+		initial: obj.initial,
+		animate: obj.animate,
+		transition: obj.transition,
+	};
 }

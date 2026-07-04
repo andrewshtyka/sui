@@ -2,8 +2,8 @@
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
+
 	contain: layout style paint;
-	transform: translateZ(0);
 
 	--mouse-x-mobile: 50%;
 	--mouse-y-mobile: 50%;
@@ -11,8 +11,9 @@
 	& > div {
 		position: absolute;
 		inset: 0;
-		transform: translate3d(0, 0, 0);
+		transform: translateZ(0);
 		backface-visibility: hidden;
+		will-change: mask;
 	}
 
 	& > div:nth-of-type(1) {

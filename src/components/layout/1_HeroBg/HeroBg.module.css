@@ -8,6 +8,42 @@
 	background-color: var(--color-bg-dark);
 }
 
+/* ================================================== */
+/* */
+/* Image */
+
+.stage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 70%;
+	width: 100%;
+}
+
+.img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.mask {
+	position: absolute;
+	inset: 0;
+
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1433' preserveAspectRatio='none'><defs><filter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'><feGaussianBlur stdDeviation='40'/></filter></defs><path d='M-200 1144.65L559.764 1235.61C665.892 1252.86 774.108 1252.86 880.236 1235.61L1640 1144.65V1646.65H-200V1144.65Z' fill='black' filter='url(%23b)'/></svg>")
+		no-repeat;
+
+	mask-size: 100% 100%;
+
+	background-color: var(--color-bg-light);
+}
+
+/* ================================================== */
+/* */
+/* Balls */
+
 .container_balls {
 	position: absolute;
 	top: 0;
@@ -19,37 +55,9 @@
 	container-type: size;
 }
 
-.ball_blue_light {
-	position: absolute;
-	top: -35%;
-	left: 50%;
-	transform: translateX(-50%);
-	border-radius: 50%;
-	width: 200%;
-	height: 100%;
-	background-color: var(--color-bg-accent-light);
-
-	filter: blur(clamp(60px, 12cqw, 172px));
-}
-
-.ball_blue {
-	position: absolute;
-	top: -55%;
-	left: 50%;
-	transform: translateX(-50%);
-	border-radius: 50%;
-	width: 200%;
-	height: 100%;
-	background-color: var(--color-bg-accent);
-
-	filter: blur(clamp(60px, 12cqw, 172px));
-}
-
 .ball_black {
 	position: absolute;
-	top: -75%;
 	left: 50%;
-	transform: translateX(-50%);
 	border-radius: 50%;
 	width: 200%;
 	height: 100%;
@@ -68,10 +76,9 @@
 	opacity: 0.8;
 	pointer-events: none;
 	mix-blend-mode: color;
-	will-change: transform;
+
 	transform-style: preserve-3d;
 	background-color: var(--color-bg-accent);
-	transform: translateZ(0);
 
 	z-index: 1;
 }

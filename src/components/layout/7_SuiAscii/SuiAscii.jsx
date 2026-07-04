@@ -65,6 +65,7 @@ export default function SuiAscii() {
 						className={`${css.img} ${css.img_base}`}
 					/>
 				)}
+
 				{imagesAnimated.map(({ id, src, alt }, i) => (
 					<MotionImage
 						key={id}
