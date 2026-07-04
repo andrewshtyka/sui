@@ -38,12 +38,12 @@ gsap.registerPlugin(SplitText);
 
 export default function Hero() {
 	// animate text
-	const textRef = React.useRef(null);
+	const ref = React.useRef(null);
 	useGSAP(() => {
-		const textEl = textRef.current;
-		if (!textEl) return;
+		const element = ref.current;
+		if (!element) return;
 
-		SplitText.create(textEl, {
+		SplitText.create(element, {
 			type: "lines",
 			mask: "lines",
 			autoSplit: true,
@@ -51,7 +51,7 @@ export default function Hero() {
 				return gsap.from(self.lines, {
 					delay: 1,
 					duration: 1.5,
-					y: 100,
+					y: "100%",
 					autoAlpha: 0,
 					stagger: 0.1,
 					ease: "power3.out",
@@ -66,7 +66,7 @@ export default function Hero() {
 			<Blur />
 
 			<div className={css.bottom}>
-				<p ref={textRef} className={`f_body_1 ${css.subtitle}`}>
+				<p ref={ref} className={`f_body_1 ${css.subtitle}`}>
 					{dataHero.subtitle}
 				</p>
 
@@ -96,9 +96,9 @@ const variantsButtons = {
 		opacity: 1,
 	},
 	transition: {
-		duration: 1,
-		delay: 1.5,
-		ease: cubicBezier(0.25, 0, 0.5, 1),
+		duration: 1.25,
+		delay: 1.25,
+		ease: cubicBezier(0, 0, 0.25, 1),
 	},
 };
 

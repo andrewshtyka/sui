@@ -21,6 +21,7 @@ import ButtonIndustry from "../ButtonIndustry/ButtonIndustry";
 // data
 
 // hooks
+import useHoverSplitText from "@/hooks/useHoverSplitButton";
 
 // providers / context
 
@@ -40,18 +41,24 @@ export default function Card({
 	btnTitle,
 	icon,
 }) {
+	const [node, setNode] = React.useState(null);
+
 	const ref = React.useRef(null);
-	const isInView = useInView(ref);
+	// const isInView = useInView(ref);
+
+	const refCallback = React.useCallback((el) => {
+		setNode(el);
+	}, []);
 
 	return (
-		<Link ref={ref} href="#" className={css.card}>
+		<Link ref={refCallback} href="#" className={css.card}>
 			{/* top */}
 			<span className={css.top}>
 				<span className={css.container_title}>
 					<span className={css.container_logoTitle}>
 						<LottieContainer
 							animationData={logoTitle}
-							isInView={isInView}
+							// isInView={isInView}
 							height="100%"
 							backgroundColor="transparent"
 						/>
@@ -87,7 +94,9 @@ export default function Card({
 			<span className={css.container_line_bottom}>
 				<DottedLine />
 			</span>
-			<ButtonIndustry icon={icon}>{btnTitle}</ButtonIndustry>
+			<ButtonIndustry icon={icon} containerRef={node}>
+				{btnTitle}
+			</ButtonIndustry>
 		</Link>
 	);
 }

@@ -1,10 +1,10 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+// import { motion } from "motion/react";
 
 // assets
 
@@ -15,6 +15,7 @@
 // data
 
 // hooks
+import useHoverSplitButton from "@/hooks/useHoverSplitButton";
 
 // providers / context
 
@@ -31,13 +32,40 @@ export default function ButtonPrimary({
 	tag: Tag = "button",
 	color = "accent",
 }) {
-	const attributes =
-		Tag === "button"
-			? { type: "button" }
-			: { target: "_blank", rel: "noopener noreferrer" };
+	const containerRef = React.useRef(null);
+	const lineTopRef = React.useRef(null);
+	const lineBottomRef = React.useRef(null);
+	useHoverSplitButton(containerRef, lineTopRef, lineBottomRef);
 
+	return (
+		<Tag
+			ref={containerRef}
+			{...getAttributes(Tag)}
+			className={`f_body_3 ${css.button}`}
+			style={{ ...getStyles(color) }}
+		>
+			<span className={css.content}>
+				<span ref={lineTopRef} className={css.line_top}>
+					{children}
+				</span>
+				<span ref={lineBottomRef} className={css.line_bottom}>
+					{children}
+				</span>
+			</span>
+		</Tag>
+	);
+}
+
+function getAttributes(tag) {
+	return tag === "button"
+		? { type: "button" }
+		: { target: "_blank", rel: "noopener noreferrer" };
+}
+
+function getStyles(color) {
 	let backgroundColor;
 	let textColor;
+
 	if (color === "accent") {
 		backgroundColor = "var(--color-button-accent)";
 		textColor = "var(--color-text-light)";
@@ -49,13 +77,8 @@ export default function ButtonPrimary({
 		textColor = "var(--color-text-light)";
 	}
 
-	return (
-		<Tag
-			{...attributes}
-			className={`f_body_3 ${css.button}`}
-			style={{ backgroundColor, color: textColor }}
-		>
-			<span className={css.content}>{children}</span>
-		</Tag>
-	);
+	return {
+		backgroundColor: backgroundColor,
+		color: textColor,
+	};
 }

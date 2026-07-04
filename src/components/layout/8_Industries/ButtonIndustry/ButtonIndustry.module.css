@@ -35,7 +35,7 @@
 	}
 }
 
-.text {
+.container_text {
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -44,8 +44,23 @@
 }
 
 @media (width >= 768px) {
-  .text {
-	padding-inline-start: calc(var(--padding-body) * 0.3);
+	.container_text {
+		padding-inline-start: calc(var(--padding-body) * 0.3);
+	}
+}
 
-  }
+.text {
+	position: relative;
+	overflow: hidden;
+}
+
+.line_top {
+	position: relative;
+	top: 0;
+}
+
+.line_bottom {
+	position: absolute;
+	left: 0;
+	top: 100%;
 }

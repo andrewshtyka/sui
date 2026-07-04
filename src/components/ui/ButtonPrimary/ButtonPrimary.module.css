@@ -27,4 +27,17 @@
 .content {
 	position: relative;
 	bottom: 0.05em;
+	display: inline-flex;
+	overflow: hidden;
+}
+
+.line_top {
+	position: relative;
+	top: 0;
+}
+
+.line_bottom {
+	position: absolute;
+	top: 100%;
+	left: 0;
 }
