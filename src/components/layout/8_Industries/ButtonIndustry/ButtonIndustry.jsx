@@ -32,6 +32,7 @@ const MotionImage = motion.create(Image);
 
 export default function ButtonIndustry({ icon, children, isHoveredCard }) {
 	const [isHoveredBtn, setIsHoveredBtn] = React.useState(false);
+
 	const lineTopRef = React.useRef(null);
 	const lineBottomRef = React.useRef(null);
 	useHoverSplitParentExternal(isHoveredCard, lineTopRef, lineBottomRef);
@@ -53,11 +54,17 @@ export default function ButtonIndustry({ icon, children, isHoveredCard }) {
 			{/* icon */}
 			<span className={css.container_icon}>
 				<span className={css.stage}>
-					<MotionImage src={icon} alt="" className={css.img_1}
-					{...anim(variantsIcon, isHoveredBtn)}
+					<MotionImage
+						src={icon}
+						alt=""
+						className={css.img_1}
+						{...anim(variantsIcon, isHoveredBtn)}
 					/>
-					<MotionImage src={icon} alt="" className={css.img_2}
-					{...anim(variantsIcon, isHoveredBtn)}
+					<MotionImage
+						src={icon}
+						alt=""
+						className={css.img_2}
+						{...anim(variantsIcon, isHoveredBtn)}
 					/>
 				</span>
 			</span>

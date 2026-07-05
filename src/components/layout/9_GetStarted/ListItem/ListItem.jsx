@@ -62,12 +62,29 @@ export default function ListItem({ title, text, button, lottie }) {
 			<Link href="#" className={css.content}>
 				{/* part 1 */}
 				<div className={css.part_1}>
-					<div className={css.container_lottie_desktop}>
-						<LottieContainer
-							animationData={lottie}
-							isInView={isInView}
-						/>
-					</div>
+					<motion.div
+						className={css.container_lottie_desktop}
+						animate={{
+							"--applied-width": isHovered
+								? "var(--font-size-h3)"
+								: "var(--width)",
+						}}
+						transition={{ duration: 0.3, ease: "easeInOut" }}
+					>
+						<motion.span
+							className={css.lottie}
+							animate={{
+								y: isHovered ? 0 : "100%",
+							}}
+							transition={{ duration: 0.3, ease: "easeInOut" }}
+						>
+							<LottieContainer
+								animationData={lottie}
+								isInView={isInView}
+								height="100%"
+							/>
+						</motion.span>
+					</motion.div>
 					<div className={css.container_lottie_mobile}>
 						<LottieContainer
 							animationData={lottie}
@@ -90,7 +107,7 @@ export default function ListItem({ title, text, button, lottie }) {
 						{text}
 					</motion.p>
 					<span className={css.container_btn}>
-						<ButtonList data={button} isHovered={isHovered} />
+						<ButtonList data={button} isHoveredCard={isHovered} />
 					</span>
 				</div>
 			</Link>

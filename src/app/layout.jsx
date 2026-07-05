@@ -19,7 +19,7 @@ import "@/styles/global.css";
 
 export const metadata = {
 	title: "Sui",
-	description: "Reverse-engineered home page of Sui,io",
+	description: "Reverse-engineered home page of Sui.io, by Andrew Shtyka",
 };
 
 export default function RootLayout({ children }) {

@@ -1,4 +1,5 @@
 .container {
+	--width: 2.75vmin;
 	--gap: calc(var(--padding-body) * 0.5);
 	--isDesktop: inset(0% 0% 100% 0%);
 	--isMobile: inset(0% 0% 0% 0%);
@@ -9,9 +10,22 @@
 	position: relative;
 }
 
+@media (width >= 480px) {
+	.container {
+		--width: 2vmin;
+	}
+}
+
 @media (width >= 768px) {
 	.container {
+		--width: 1.5vmin;
 		--gap: calc(var(--padding-body) * 0.75);
+	}
+}
+
+@media (width >= 992px) {
+	.container {
+		--width: 0.9vmax;
 	}
 }
 
@@ -83,10 +97,30 @@
 
 @media (width >= 768px) {
 	.container_lottie_desktop {
-		display: block;
+		display: flex;
 		position: relative;
 		top: calc(var(--space-1) * -1);
+
+		aspect-ratio: 1;
+
+		--applied-width: var(--width);
+		width: var(--applied-width);
+		height: var(--applied-width);
+
+		background-color: var(--color-bg-accent);
+
+		position: relative;
+		overflow: hidden;
 	}
+}
+
+.lottie {
+	display: inline-flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .container_lottie_mobile {

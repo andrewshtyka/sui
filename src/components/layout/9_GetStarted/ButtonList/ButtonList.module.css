@@ -32,3 +32,13 @@
 	filter: invert();
 	overflow: hidden;
 }
+
+.img_1 {
+	position: relative;
+}
+
+.img_2 {
+	position: absolute;
+	top: 0;
+	left: -200%;
+}
