@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useInView } from "motion/react";
+import { cubicBezier, motion, useInView } from "motion/react";
 
 // assets
 
@@ -64,19 +64,11 @@ export default function ListItem({ title, text, button, lottie }) {
 				<div className={css.part_1}>
 					<motion.div
 						className={css.container_lottie_desktop}
-						animate={{
-							"--applied-width": isHovered
-								? "var(--font-size-h3)"
-								: "var(--width)",
-						}}
-						transition={{ duration: 0.3, ease: "easeInOut" }}
+						{...anim(variantsBox, isHovered)}
 					>
 						<motion.span
 							className={css.lottie}
-							animate={{
-								y: isHovered ? 0 : "100%",
-							}}
-							transition={{ duration: 0.3, ease: "easeInOut" }}
+							{...anim(variantsLottie, isHovered)}
 						>
 							<LottieContainer
 								animationData={lottie}
@@ -113,4 +105,51 @@ export default function ListItem({ title, text, button, lottie }) {
 			</Link>
 		</motion.li>
 	);
+}
+
+const variantsBox = {
+	initial: {
+		opacity: 1,
+	},
+	animate: (state) => ({
+		"--applied-width": state ? "var(--font-size-h3)" : "var(--width)",
+		opacity: state ? [0, 1, 0, 1, 0, 1] : [1, 0, 1, 0, 1, 0, 1],
+	}),
+	transition: (state) => ({
+		"--applied-width": {
+			delay: state ? 0.5 : 0,
+			duration: 0.4,
+			ease: state
+				? cubicBezier(0.5, 0, 0.25, 1)
+				: cubicBezier(1, 0.25, 0, 0.5),
+		},
+		opacity: {
+			delay: state ? 0 : 0.4,
+			duration: 0.7,
+			ease: "easeInOut",
+		},
+	}),
+};
+
+const variantsLottie = {
+	initial: {
+		y: "100%",
+	},
+	animate: (state) => ({
+		y: state ? 0 : "100%",
+	}),
+	transition: (state) => ({
+		delay: state ? 0.4 : 0,
+		duration: 0.3,
+		ease: "easeInOut",
+	}),
+};
+
+function anim(obj, state) {
+	return {
+		variants: obj,
+		initial: obj.initial,
+		animate: obj.animate(state),
+		transition: obj.transition(state),
+	};
 }
