@@ -77,7 +77,7 @@ export default function useHoverLinkScramble(
 			const { shuffledArrHalf } = getHalfAndShuffledArray(
 				splitText.chars.length
 			);
-			const allCharsArr = [...textNode.querySelectorAll(".char")];
+			const allCharsArr = textNode.querySelectorAll(".char");
 			const { selectedCharsArr, restCharsArr } = getArrOfShuffledChars(
 				allCharsArr,
 				shuffledArrHalf

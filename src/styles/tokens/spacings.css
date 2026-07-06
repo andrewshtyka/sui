@@ -29,7 +29,7 @@
 	/* ================================================== */
 	/* */
 	/* Padding */
-	--padding-body: 3.5vmin;
+	--padding-body: 3vmin;
 	--gap-section-L: 45vmin;
 	--gap-section-M: 40vmin;
 	--gap-section-S: 25vmin;
@@ -58,6 +58,8 @@
 
 @media (width >= 768px) {
 	:root {
+		--padding-body: 2.5vmin;
+
 		--gap-section-L: 25vmin;
 		--gap-section-M: 25vmin;
 		--gap-section-S: 11vmin;

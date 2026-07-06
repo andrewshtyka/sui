@@ -57,7 +57,15 @@ export default function Header() {
 
 			{/* CTA */}
 			<div className={css.col_3}>
-				<ButtonSecondary>{dataHeader.cta}</ButtonSecondary>
+				<span className={css.desktop_only}>
+					<ButtonSecondary>{dataHeader.cta}</ButtonSecondary>
+				</span>
+				<span className={css.mobile_only}>
+					<button type-="button" className={css.cta_mobile}>
+						<div className={css.line} />
+						<div className={css.line} />
+					</button>
+				</span>
 			</div>
 		</header>
 	);
