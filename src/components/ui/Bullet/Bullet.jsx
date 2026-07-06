@@ -3,8 +3,8 @@
 // #region ============================== Imports
 
 // animation
-// import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+import * as motion from "motion/react-client";
+// import { motion } from "motion/react";
 
 // assets
 
@@ -30,7 +30,9 @@ export default function Bullet({
 	height = 0.75,
 	width = 1,
 	color = "var(--color-bg-accent)",
+	colorHover = "",
 	strokeSize = 1,
+	isHovered = false,
 }) {
 	return (
 		<span
@@ -40,20 +42,42 @@ export default function Bullet({
 				width: `calc(var(--padding-body) * ${width})`,
 			}}
 		>
-			<span
+			<motion.span
 				className={css.vertical}
 				style={{
-					backgroundColor: color,
 					width: `calc(var(--space-1) * ${strokeSize})`,
 				}}
+				{...anim(variantsBar, isHovered, color, colorHover)}
 			/>
-			<span
+			<motion.span
 				className={css.horizontal}
 				style={{
-					backgroundColor: color,
 					height: `calc(var(--space-1) * ${strokeSize})`,
 				}}
+				{...anim(variantsBar, isHovered, color, colorHover)}
 			/>
 		</span>
 	);
+}
+
+const variantsBar = {
+	initial: (color) => ({
+		backgroundColor: color,
+	}),
+	animate: (state, color, colorFinal) => ({
+		backgroundColor: state ? colorFinal : color,
+	}),
+	transition: (state) => ({
+		duration: state ? 0.2 : 0.4,
+		ease: "easeInOut",
+	}),
+};
+
+function anim(obj, state, color, colorFinal) {
+	return {
+		variants: obj,
+		initial: obj.initial(color),
+		animate: obj.animate(state, color, colorFinal),
+		transition: obj.transition(state),
+	};
 }

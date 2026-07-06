@@ -14,6 +14,7 @@
 	--color-gray-920: hsl(var(--hue), 9%, 92%);
 	--color-gray-950: hsl(var(--hue), 16%, 96%);
 	--color-light: hsl(var(--hue), 0%, 100%);
+	--df: #6c7684;
 
 	/* accent */
 	--color-blue: hsl(var(--hue), 100%, 58%);

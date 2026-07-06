@@ -11,6 +11,7 @@ Original website: https://www.sui.io/
 - React 19
 - Motion (Framer Motion)
 - GSAP
+- Lodash
 
 ### Setup
 
