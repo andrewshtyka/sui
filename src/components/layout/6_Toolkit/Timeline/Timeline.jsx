@@ -91,20 +91,29 @@ export default function Timeline({ containerRef }) {
 	const pathRawHeightTop = useTransform(
 		pathScrollVelocity,
 		[0, 1],
-		[0, innerHeightTimelinePx / 3],
+		[0, innerHeightTimelinePx / 2],
+		{ clamp: true }
+	);
+	const pathRawHeightBottom = useTransform(
+		pathScrollVelocity,
+		[-1, 0],
+		[innerHeightTimelinePx / 2, 0],
 		{ clamp: true }
 	);
 	const pathHeightTop = useSpring(pathRawHeightTop, {
 		stiffness: 300,
 		damping: 30,
 	});
-	const pathRawHeightBottom = useTransform(
-		pathScrollVelocity,
-		[-1, 0],
-		[innerHeightTimelinePx / 3, 0],
-		{ clamp: true }
-	);
 	const pathHeightBottom = useSpring(pathRawHeightBottom, {
+		stiffness: 300,
+		damping: 30,
+	});
+	const boxPositionRaw = useTransform(
+		pathScrollVelocity,
+		[-1, 0, 1],
+		[innerHeightTimelinePx / -4, 0, innerHeightTimelinePx / 4]
+	);
+	const boxPosition = useSpring(boxPositionRaw, {
 		stiffness: 300,
 		damping: 30,
 	});
@@ -125,7 +134,10 @@ export default function Timeline({ containerRef }) {
 					}}
 				>
 					{/* path */}
-					<div className={css.container_path}>
+					<motion.div
+						className={css.container_path}
+						style={{ y: boxPosition }}
+					>
 						<motion.div
 							className={`${css.timeline_path} ${css.top}`}
 							style={{ height: pathHeightTop }}
@@ -134,8 +146,11 @@ export default function Timeline({ containerRef }) {
 							className={`${css.timeline_path} ${css.bottom}`}
 							style={{ height: pathHeightBottom }}
 						/>
-					</div>
-					<div className={css.timeline_box} />
+					</motion.div>
+					<motion.div
+						className={css.timeline_box}
+						style={{ y: boxPosition }}
+					/>
 				</motion.div>
 			</div>
 
