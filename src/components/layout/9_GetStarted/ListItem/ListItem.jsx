@@ -35,6 +35,21 @@ export default function ListItem({ title, text, button, lottie }) {
 	const isInView = useInView(ref);
 
 	const [isHovered, setIsHovered] = React.useState(false);
+	const [delayedIsHovered, setDelayedIsHovered] = React.useState(false);
+	React.useEffect(() => {
+		function setter(value) {
+			setDelayedIsHovered(value);
+		}
+
+		if (isHovered) {
+			const timeoutId = setTimeout(() => {
+				setter(true);
+			}, 800);
+			return () => clearTimeout(timeoutId);
+		}
+
+		setter(false);
+	}, [isHovered]);
 
 	return (
 		<motion.li
@@ -72,7 +87,7 @@ export default function ListItem({ title, text, button, lottie }) {
 						>
 							<LottieContainer
 								animationData={lottie}
-								isInView={isInView}
+								isParentHovered={delayedIsHovered}
 								height="100%"
 							/>
 						</motion.span>

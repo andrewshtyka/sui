@@ -30,6 +30,7 @@ import React from "react";
 export default function LottieContainer({
 	animationData,
 	isInView = false,
+	isParentHovered = false,
 	height = "var(--font-size-h3)",
 	backgroundColor = "var(--color-bg-accent)",
 	...rest
@@ -61,12 +62,15 @@ export default function LottieContainer({
 		};
 	}, [animationData]);
 
-	// play lottie, when isInView === true
+	// autoplay lottie, when it's in viewport
 	React.useEffect(() => {
 		if (isInView && animRef.current) {
 			animRef.current.goToAndPlay(0, true);
 		}
-	}, [isInView]);
+		if (isParentHovered && animRef.current) {
+			animRef.current.goToAndPlay(0, true);
+		}
+	}, [isInView, isParentHovered]);
 
 	return (
 		<span
