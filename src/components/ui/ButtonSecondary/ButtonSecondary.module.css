@@ -1,0 +1,46 @@
+.button {
+	--inline-multiplier: 0.5;
+	--block-multiplier: 0.8;
+
+	padding-inline: calc(6.25vmin * var(--inline-multiplier));
+	padding-block: calc(3.75vmin * var(--block-multiplier));
+}
+
+@media (width >= 480px) {
+	.button {
+		padding-inline: calc(5vmin * var(--inline-multiplier));
+		padding-block: calc(2.5vmin * var(--block-multiplier));
+	}
+}
+
+@media (width >= 768px) {
+	.button {
+		padding-inline: calc(3.25vmin * var(--inline-multiplier));
+		padding-block: calc(1.75vmin * var(--block-multiplier));
+	}
+}
+
+@media (width >= 992px) {
+	.button {
+		padding-inline: calc(2vmax * var(--inline-multiplier));
+		padding-block: calc(1vmax * var(--block-multiplier));
+	}
+}
+
+.content {
+	position: relative;
+	bottom: 0.05em;
+	display: inline-flex;
+	overflow: hidden;
+}
+
+.line_top {
+	position: relative;
+	top: 0;
+}
+
+.line_bottom {
+	position: absolute;
+	top: 100%;
+	left: 0;
+}

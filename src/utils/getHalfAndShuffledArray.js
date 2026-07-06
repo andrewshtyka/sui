@@ -17,9 +17,9 @@ export default function getHalfAndShuffledArray(textLength) {
 	}
 
 	const shuffledArr = shuffle(originalArr);
-	const half = Math.ceil(shuffledArr.length / 2);
-	const shuffledArrHalf = shuffledArr.slice(0, half);
-	const restArr = shuffledArr.slice(half);
+	const part = Math.ceil(shuffledArr.length / 1.75);
+	const shuffledArrHalf = shuffledArr.slice(0, part);
+	const restArr = shuffledArr.slice(part);
 
 	return { shuffledArrHalf, restArr };
 }

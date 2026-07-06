@@ -1,0 +1,20 @@
+.container {
+	display: inline-flex;
+	align-items: center;
+	column-gap: 0.5em;
+}
+
+.container_icon {
+	display: inline-flex;
+	aspect-ratio: 1;
+	width: calc(var(--padding-body));
+
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	aspect-ratio: 1;
+	width: 40%;
+	filter: invert();
+}

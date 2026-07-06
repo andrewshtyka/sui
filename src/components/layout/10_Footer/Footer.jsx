@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+// import { motion } from "motion/react";
 
 // assets
 
@@ -27,7 +27,7 @@ import css from "./Footer.module.css";
 
 // utility
 import React from "react";
-import { data } from "motion/react-client";
+import IconLink from "./IconLink/IconLink";
 
 // #endregion ===========================
 
@@ -120,13 +120,7 @@ export default function Footer() {
 				<ul className={css.icons}>
 					{dataFooter.icons.map(({ id, src, alt }) => (
 						<li key={id}>
-							<a href="#" className={css.container_icon}>
-								<Image
-									src={src}
-									alt={alt}
-									className={css.icon}
-								/>
-							</a>
+							<IconLink src={src} alt={alt} />
 						</li>
 					))}
 				</ul>

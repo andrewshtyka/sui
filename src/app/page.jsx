@@ -18,6 +18,7 @@ import Toolkit from "@/components/layout/6_Toolkit/Toolkit";
 import SuiAscii from "@/components/layout/7_SuiAscii/SuiAscii";
 import Industries from "@/components/layout/8_Industries/Industries";
 import GetStarted from "@/components/layout/9_GetStarted/GetStarted";
+import Header from "@/components/layout/0_Header/Header";
 
 // constants
 
@@ -36,6 +37,7 @@ import React from "react";
 export default function HomePage() {
 	return (
 		<>
+			<Header />
 			<HeroBg />
 			<Hero />
 			<Companies />

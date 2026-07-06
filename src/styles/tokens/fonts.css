@@ -47,7 +47,7 @@
 	--font-letter-spacing-h6: -0.04em;
 	--font-letter-spacing-body-1: -0.02em;
 	--font-letter-spacing-body-2: -0.02em;
-	--font-letter-spacing-body-3: -0.02em;
+	--font-letter-spacing-body-3: 0em;
 	--font-letter-spacing-mono-title: -0.02em;
 	--font-letter-spacing-mono-body: -0.05em;
 }
