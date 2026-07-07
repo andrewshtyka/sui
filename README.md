@@ -12,6 +12,7 @@ Original website: https://www.sui.io/
 - Motion (Framer Motion)
 - GSAP
 - Lodash
+- Lenis Scroll
 
 ### Setup
 

@@ -34,23 +34,21 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
-export default function useRevealTitleInView(ref, delay = 0) {
+export default function useRevealSubtitleInView(ref, delay = 0.1) {
 	useGSAP(() => {
 		const element = ref.current;
 		if (!element) return;
 
 		const split = SplitText.create(element, {
-			type: "words",
+			type: "words, chars",
 		});
 
 		gsap.fromTo(
-			split.words,
+			split.chars,
 			{
-				y: "40%",
 				autoAlpha: 0,
 			},
 			{
-				y: "0%",
 				autoAlpha: 1,
 				delay: delay,
 				scrollTrigger: {
@@ -58,8 +56,8 @@ export default function useRevealTitleInView(ref, delay = 0) {
 					start: "bottom 90%",
 				},
 				duration: 0.75,
-				stagger: 0.075,
-				ease: "power2.out",
+				stagger: 0.01,
+				ease: "power3.inOut",
 			}
 		);
 	});

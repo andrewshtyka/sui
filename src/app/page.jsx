@@ -1,4 +1,4 @@
-// 'use client';
+"use client";
 
 // #region ============================== Imports
 
@@ -20,10 +20,12 @@ import Industries from "@/components/layout/8_Industries/Industries";
 import GetStarted from "@/components/layout/9_GetStarted/GetStarted";
 import Header from "@/components/layout/0_Header/Header";
 import TopWrapper from "@/components/layout/TopWrapper/TopWrapper";
+import Overshoot from "@/components/layout/11_Overshoot/Overshoot";
 
 // constants
 
 // hooks
+import useLenis from "@/hooks/useLenis";
 
 // providers / context
 
@@ -36,6 +38,8 @@ import React from "react";
 // #endregion ===========================
 
 export default function HomePage() {
+	useLenis();
+
 	return (
 		<>
 			<Header />
@@ -55,6 +59,7 @@ export default function HomePage() {
 				<Industries />
 				<GetStarted />
 				<Footer />
+				<Overshoot />
 			</div>
 		</>
 	);

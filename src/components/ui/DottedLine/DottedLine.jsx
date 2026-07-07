@@ -29,11 +29,12 @@ import React from "react";
 export default function DottedLine({
 	color = "var(--color-gray-800)",
 	isHorizontal = true,
+	size = "100%",
 }) {
 	return (
 		<svg
-			width={isHorizontal ? "100%" : "var(--space-1)"}
-			height={isHorizontal ? "var(--space-1)" : "100%"}
+			width={isHorizontal ? size : "var(--space-1)"}
+			height={isHorizontal ? "var(--space-1)" : size}
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
 		>

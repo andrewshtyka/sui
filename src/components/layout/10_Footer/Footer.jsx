@@ -1,10 +1,10 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 
 // assets
 
@@ -32,8 +32,14 @@ import IconLink from "./IconLink/IconLink";
 // #endregion ===========================
 
 export default function Footer() {
+	const footerRef = React.useRef(null);
+	const isFooterInView = useInView(footerRef, {
+		margin: "0% 0% 5% 0%",
+		once: true
+	});
+
 	return (
-		<footer className={css.section}>
+		<footer ref={footerRef} className={css.section}>
 			<div className={css.line}>
 				<DottedLine />
 				<Image
@@ -50,7 +56,13 @@ export default function Footer() {
 					</h3>
 					<ul>
 						{dataFooter.platform.items.map((text, i) => (
-							<Item key={i}>{text}</Item>
+							<Item
+								key={i}
+								isFooterInView={isFooterInView}
+								delay={i}
+							>
+								{text}
+							</Item>
 						))}
 					</ul>
 				</div>
@@ -62,7 +74,13 @@ export default function Footer() {
 					</h3>
 					<ul>
 						{dataFooter.solutions.items.map((text, i) => (
-							<Item key={i}>{text}</Item>
+							<Item
+								key={i}
+								isFooterInView={isFooterInView}
+								delay={i}
+							>
+								{text}
+							</Item>
 						))}
 					</ul>
 				</div>
@@ -75,7 +93,13 @@ export default function Footer() {
 						</h3>
 						<ul>
 							{dataFooter.developers.items.map((text, i) => (
-								<Item key={i}>{text}</Item>
+								<Item
+									key={i}
+									isFooterInView={isFooterInView}
+									delay={i}
+								>
+									{text}
+								</Item>
 							))}
 						</ul>
 					</div>
@@ -85,7 +109,13 @@ export default function Footer() {
 						</h3>
 						<ul>
 							{dataFooter.community.items.map((text, i) => (
-								<Item key={i}>{text}</Item>
+								<Item
+									key={i}
+									isFooterInView={isFooterInView}
+									delay={i}
+								>
+									{text}
+								</Item>
 							))}
 						</ul>
 					</div>
@@ -99,7 +129,13 @@ export default function Footer() {
 						</h3>
 						<ul>
 							{dataFooter.resources.items.map((text, i) => (
-								<Item key={i}>{text}</Item>
+								<Item
+									key={i}
+									isFooterInView={isFooterInView}
+									delay={i}
+								>
+									{text}
+								</Item>
 							))}
 						</ul>
 					</div>
@@ -109,7 +145,13 @@ export default function Footer() {
 						</h3>
 						<ul>
 							{dataFooter.about.items.map((text, i) => (
-								<Item key={i}>{text}</Item>
+								<Item
+									key={i}
+									isFooterInView={isFooterInView}
+									delay={i}
+								>
+									{text}
+								</Item>
 							))}
 						</ul>
 					</div>

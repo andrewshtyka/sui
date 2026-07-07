@@ -4,13 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import {
-	motion,
-	useScroll,
-	useSpring,
-	useTransform,
-	useVelocity,
-} from "motion/react";
+import { motion, useInView } from "motion/react";
 
 // assets
 
@@ -25,6 +19,7 @@ import { dataToolkit } from "@/data/dataToolkit";
 
 // hooks
 import useRevealTitleInView from "@/hooks/useRevealTitleInView";
+import useRevealSubtitleInView from "@/hooks/useRevealSubtitleInView";
 
 // providers / context
 
@@ -38,8 +33,18 @@ import React from "react";
 
 export default function Toolkit() {
 	const containerRef = React.useRef(null);
+
 	const titleRef = React.useRef(null);
 	useRevealTitleInView(titleRef);
+
+	const subtitleRef = React.useRef(null);
+	useRevealSubtitleInView(subtitleRef);
+
+	const boxRef = React.useRef(null);
+	const isBoxInView = useInView(boxRef, {
+		once: true,
+		margin: "0% 0% -12% 0%",
+	});
 
 	return (
 		<section className={css.section}>
@@ -48,8 +53,14 @@ export default function Toolkit() {
 			</h2>
 
 			<div className={css.subtitle}>
-				<div className={css.box} />
-				<p className={`f_body_2 f_center`}>{dataToolkit.subtitle}</p>
+				<motion.div
+					ref={boxRef}
+					className={css.box}
+					{...anim(variantsBox, isBoxInView)}
+				/>
+				<p ref={subtitleRef} className={`f_body_2 f_center`}>
+					{dataToolkit.subtitle}
+				</p>
 			</div>
 
 			{/* cards */}
@@ -75,4 +86,24 @@ export default function Toolkit() {
 			</div>
 		</section>
 	);
+}
+
+const variantsBox = {
+	initial: {
+		opacity: 0,
+	},
+	animate: (state) => ({
+		opacity: state ? 1 : 0,
+	}),
+	transition: {
+		duration: 0.75,
+	},
+};
+
+function anim(obj, state) {
+	return {
+		initial: obj.initial,
+		animate: obj.animate(state),
+		transition: obj.transition,
+	};
 }

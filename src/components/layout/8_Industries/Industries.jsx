@@ -4,7 +4,7 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+import { motion, useInView } from "motion/react";
 
 // assets
 
@@ -18,6 +18,7 @@ import { dataIndustries } from "@/data/dataIndustries";
 
 // hooks
 import useRevealTitleInView from "@/hooks/useRevealTitleInView";
+import useRevealSubtitleInView from "@/hooks/useRevealSubtitleInView";
 
 // providers / context
 
@@ -33,6 +34,15 @@ export default function Industries() {
 	const titleRef = React.useRef(null);
 	useRevealTitleInView(titleRef);
 
+	const subtitleRef = React.useRef(null);
+	useRevealSubtitleInView(subtitleRef);
+
+	const boxRef = React.useRef(null);
+	const isBoxInView = useInView(boxRef, {
+		once: true,
+		margin: "0% 0% -12% 0%",
+	});
+
 	return (
 		<section className={css.section}>
 			<h2 ref={titleRef} className={`f_h2 f_center ${css.title}`}>
@@ -40,8 +50,14 @@ export default function Industries() {
 			</h2>
 
 			<div className={css.subtitle}>
-				<div className={css.box} />
-				<p className={`f_body_2 f_center`}>{dataIndustries.subtitle}</p>
+				<motion.div
+					ref={boxRef}
+					className={css.box}
+					{...anim(variantsBox, isBoxInView)}
+				/>
+				<p ref={subtitleRef} className={`f_body_2 f_center`}>
+					{dataIndustries.subtitle}
+				</p>
 			</div>
 
 			<ul className={css.grid_cards}>
@@ -61,4 +77,24 @@ export default function Industries() {
 			</ul>
 		</section>
 	);
+}
+
+const variantsBox = {
+	initial: {
+		opacity: 0,
+	},
+	animate: (state) => ({
+		opacity: state ? 1 : 0,
+	}),
+	transition: {
+		duration: 0.75,
+	},
+};
+
+function anim(obj, state) {
+	return {
+		initial: obj.initial,
+		animate: obj.animate(state),
+		transition: obj.transition,
+	};
 }

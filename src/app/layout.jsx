@@ -18,7 +18,7 @@ import "@/styles/global.css";
 // #endregion ===========================
 
 export const metadata = {
-	title: "Sui",
+	title: "Sui | Home-page remake",
 	description: "Reverse-engineered home page of Sui.io, by Andrew Shtyka",
 };
 

@@ -18,6 +18,7 @@ import Bullet from "@/components/ui/Bullet/Bullet";
 
 // hooks
 import useHoverLinkScramble from "@/hooks/useHoverLinkScramble";
+import useRevealFooter from "@/hooks/useRevealFooter";
 
 // providers / context
 
@@ -29,11 +30,12 @@ import React from "react";
 
 // #endregion ===========================
 
-export default function Item({ children }) {
+export default function Item({ children, isFooterInView = false, delay = 0 }) {
 	const [isHovered, setIsHovered] = React.useState(false);
 	const linkRef = React.useRef(null);
 	const textRef = React.useRef(null);
 	useHoverLinkScramble(linkRef, textRef, "gray", "black");
+	useRevealFooter(textRef, isFooterInView, delay);
 
 	return (
 		<li className={css.container}>
