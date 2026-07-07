@@ -42,20 +42,26 @@ export default function useRevealSplitTextInView(ref, delay = 0) {
 		const split = SplitText.create(element, {
 			type: "lines",
 			mask: "lines",
-			autoSplit: true,
 		});
 
-		gsap.from(split.lines, {
-			delay: delay,
-			scrollTrigger: {
-				trigger: element,
-				start: "bottom 95%",
+		gsap.fromTo(
+			split.lines,
+			{
+				y: "100%",
+				autoAlpha: 0,
 			},
-			duration: 1.5,
-			y: "100%",
-			autoAlpha: 0,
-			stagger: 0.1,
-			ease: "power3.out",
-		});
+			{
+				y: "0%",
+				delay: delay,
+				scrollTrigger: {
+					trigger: element,
+					start: "bottom 95%",
+				},
+				duration: 1.5,
+				autoAlpha: 1,
+				stagger: 0.1,
+				ease: "power3.out",
+			}
+		);
 	});
 }

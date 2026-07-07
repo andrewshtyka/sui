@@ -7,7 +7,7 @@ Original website: https://www.sui.io/
 
 ### Tech stack
 
-- Next.js 16 (App Router)
+- Next.js 16 (App Router, SSG)
 - React 19
 - Motion (Framer Motion)
 - GSAP
