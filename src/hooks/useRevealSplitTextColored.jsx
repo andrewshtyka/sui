@@ -36,13 +36,6 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrambleTextPlugin);
 
-const COLORS = {
-	white: "#ffffff",
-	black: "#000000",
-	gray: "#6c7684",
-	blue: "#2986ff",
-};
-
 export default function useRevealSplitTextColored(ref) {
 	useGSAP(
 		() => {
@@ -52,8 +45,8 @@ export default function useRevealSplitTextColored(ref) {
 			const split = SplitText.create(element, {
 				type: "chars, words",
 				mask: "chars",
-				charsClass: "char",
-				wordsClass: "word",
+				charsClass: "charAbout",
+				wordsClass: "wordAbout",
 			});
 
 			const tl = gsap.timeline({

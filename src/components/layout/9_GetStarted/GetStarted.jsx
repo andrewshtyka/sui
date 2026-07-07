@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
@@ -17,6 +17,7 @@ import ListItem from "./ListItem/ListItem";
 import { dataGetStarted } from "@/data/dataGetStarted";
 
 // hooks
+import useRevealTitleInView from "@/hooks/useRevealTitleInView";
 
 // providers / context
 
@@ -29,9 +30,12 @@ import React from "react";
 // #endregion ===========================
 
 export default function GetStarted() {
+	const titleRef = React.useRef(null);
+	useRevealTitleInView(titleRef);
+
 	return (
 		<section className={css.section}>
-			<h2 className={`f_h2 f_center ${css.title}`}>
+			<h2 ref={titleRef} className={`f_h2 f_center ${css.title}`}>
 				{dataGetStarted.title}
 			</h2>
 

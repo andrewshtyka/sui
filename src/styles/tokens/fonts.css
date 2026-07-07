@@ -54,7 +54,7 @@
 
 @media (width >= 480px) {
 	:root {
-		--font-size-h2: 15vmin;
+		--font-size-h2: 13vmin;
 		--font-size-h3: 9.75vmin;
 		--font-size-h4: 5.5vmin;
 		--font-size-h5: 6vmin;

@@ -16,7 +16,7 @@ import {
 
 // components
 import Card from "./Card/Card";
-import DottedLine from "@/components/ui/DottedLine/DottedLine";
+import Timeline from "./Timeline/Timeline";
 
 // constants
 import { dataToolkit } from "@/data/dataToolkit";
@@ -24,6 +24,7 @@ import { dataToolkit } from "@/data/dataToolkit";
 // data
 
 // hooks
+import useRevealTitleInView from "@/hooks/useRevealTitleInView";
 
 // providers / context
 
@@ -32,16 +33,17 @@ import css from "./Toolkit.module.css";
 
 // utility
 import React from "react";
-import Timeline from "./Timeline/Timeline";
 
 // #endregion ===========================
 
 export default function Toolkit() {
 	const containerRef = React.useRef(null);
+	const titleRef = React.useRef(null);
+	useRevealTitleInView(titleRef);
 
 	return (
 		<section className={css.section}>
-			<h2 className={`f_h2 f_center ${css.title}`}>
+			<h2 ref={titleRef} className={`f_h2 f_center ${css.title}`}>
 				{dataToolkit.title}
 			</h2>
 
