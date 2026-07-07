@@ -17,6 +17,7 @@ import LottieContainer from "@/components/ui/LottieContainer/LottieContainer";
 // data
 
 // hooks
+import useRevealSplitTextColored from "@/hooks/useRevealSplitTextColored";
 
 // providers / context
 
@@ -31,11 +32,14 @@ import React from "react";
 export default function Item({ id, text, animationData, isLast }) {
 	const itemRef = React.useRef(null);
 	const isInView = useInView(itemRef);
+	useRevealSplitTextColored(itemRef);
 
 	return (
-		<li key={id} ref={itemRef} className={css.item}>
+		<li key={id} className={css.item}>
 			<div className={css.container}>
-				<span className={`f_h5`}>{text}</span>
+				<span ref={itemRef} className={`f_h5`}>
+					{text}
+				</span>
 				<span className={css.container_lottie}>
 					<LottieContainer
 						animationData={animationData}

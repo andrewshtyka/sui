@@ -20,3 +20,37 @@ body {
 ::selection {
 	background-color: var(--color-bg-dark);
 }
+
+/* ================================================== */
+/* */
+/* Reveal text in section AboutList */
+
+.char-mask {
+	overflow: visible !important;
+}
+
+.word:nth-of-type(1) .char-mask {
+	& .char {
+		--char-bg-color: var(--color-bg-dark);
+		--char-color: var(--color-text-light);
+	}
+}
+
+.word:nth-of-type(2) .char-mask {
+	& .char {
+		--char-bg-color: var(--color-bg-accent);
+		--char-color: var(--color-text-light);
+	}
+}
+
+.word:nth-of-type(3) .char-mask {
+	& .char {
+		--char-bg-color: var(--color-gray-800);
+		--char-color: var(--color-text-dark);
+	}
+}
+
+.char {
+	background-color: var(--char-bg-color);
+	color: var(--char-color);
+}

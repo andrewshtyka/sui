@@ -30,7 +30,7 @@ export default function TopWrapper({ children }) {
 	const containerRef = React.useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
-		offset: ["start start", "102% end"],
+		offset: ["start start", "100.5% end"],
 	});
 	const width = useTransform(
 		scrollYProgress,
