@@ -72,8 +72,8 @@ const variantsBall = {
 		opacity: 0,
 	},
 	transition: {
-		y: { duration: 1.5 },
-		opacity: { duration: 1.5, delay: 0.5 },
+		y: { duration: 1.5, delay: 0.1 },
+		opacity: { duration: 1.5, delay: 0.6 },
 		ease: cubicBezier(0.25, 0, 0.75, 1),
 	},
 };

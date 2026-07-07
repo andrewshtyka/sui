@@ -19,6 +19,7 @@ import SuiAscii from "@/components/layout/7_SuiAscii/SuiAscii";
 import Industries from "@/components/layout/8_Industries/Industries";
 import GetStarted from "@/components/layout/9_GetStarted/GetStarted";
 import Header from "@/components/layout/0_Header/Header";
+import TopWrapper from "@/components/layout/TopWrapper/TopWrapper";
 
 // constants
 
@@ -38,11 +39,15 @@ export default function HomePage() {
 	return (
 		<>
 			<Header />
-			<HeroBg />
-			<Hero />
-			<Companies />
-			<About />
-			<AboutList />
+
+			<TopWrapper>
+				<HeroBg />
+				<Hero />
+				<Companies />
+				<About />
+				<AboutList />
+			</TopWrapper>
+
 			<Toolkit />
 
 			<div className={css.container}>

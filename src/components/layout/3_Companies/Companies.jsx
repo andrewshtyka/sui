@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
@@ -17,6 +17,7 @@ import Image from "next/image";
 import { dataCompanies } from "@/data/dataCompanies";
 
 // hooks
+import useRevealSplitTextInView from "@/hooks/useRevealSplitTextInView";
 
 // providers / context
 
@@ -29,9 +30,12 @@ import React from "react";
 // #endregion ===========================
 
 export default function Companies() {
+	const ref = React.useRef(null);
+	useRevealSplitTextInView(ref);
+
 	return (
 		<section className={css.section}>
-			<h2 className={`f_h6 f_center ${css.title}`}>
+			<h2 ref={ref} className={`f_h6 f_center ${css.title}`}>
 				{dataCompanies.title}
 			</h2>
 

@@ -1,15 +1,17 @@
-// "use client";
+"use client";
 
 // #region ============================== Imports
 
 // animation
-// import * as motion from 'motion/react-client'
-// import { motion } from 'motion/react'
+// import * as motion from "motion/react-client";
+import { motion, cubicBezier } from "motion/react";
 
 // assets
 
 // components
 import ButtonSecondary from "@/components/ui/ButtonSecondary/ButtonSecondary";
+import Item from "./Item/Item";
+import Image from "next/image";
 
 // constants
 
@@ -21,18 +23,16 @@ import { dataHeader } from "@/data/dataHeader";
 // providers / context
 
 // styles
-import Image from "next/image";
 import css from "./Header.module.css";
 
 // utility
 import React from "react";
-import Item from "./Item/Item";
 
 // #endregion ===========================
 
 export default function Header() {
 	return (
-		<header className={css.header}>
+		<motion.header className={css.header} {...anim(variantsHeader)}>
 			{/* logo */}
 			<div className={css.col_1}>
 				<Image
@@ -67,6 +67,29 @@ export default function Header() {
 					</button>
 				</span>
 			</div>
-		</header>
+		</motion.header>
 	);
+}
+
+const variantsHeader = {
+	initial: {
+		y: "-150%",
+	},
+	animate: {
+		y: 0,
+	},
+	transition: {
+		delay: 0.5,
+		duration: 0.75,
+		ease: cubicBezier(0.25, 0, 0, 1),
+	},
+};
+
+function anim(obj) {
+	return {
+		variants: obj,
+		initial: obj.initial,
+		animate: obj.animate,
+		transition: obj.transition,
+	};
 }

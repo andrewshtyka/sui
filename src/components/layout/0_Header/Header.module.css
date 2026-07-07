@@ -41,7 +41,7 @@
 @media (width >= 992px) {
 	.header {
 		--padding-inline: calc(var(--padding-body) * 0.7);
-		--padding-block: calc(var(--padding-body) * 0.5);
+		--padding-block: calc(var(--padding-body) * 0.4);
 	}
 }
 

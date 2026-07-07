@@ -5,9 +5,6 @@
 // animation
 // import * as motion from 'motion/react-client'
 import { cubicBezier, motion } from "motion/react";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { useGSAP } from "@gsap/react";
 
 // assets
 
@@ -22,6 +19,7 @@ import Title from "./Title/Title";
 import { dataHero } from "@/data/dataHero";
 
 // hooks
+import useRevealSplitTextInView from "@/hooks/useRevealSplitTextInView";
 
 // providers / context
 
@@ -33,32 +31,9 @@ import React from "react";
 
 // #endregion ===========================
 
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(SplitText);
-
 export default function Hero() {
-	// animate text
 	const ref = React.useRef(null);
-	useGSAP(() => {
-		const element = ref.current;
-		if (!element) return;
-
-		SplitText.create(element, {
-			type: "lines",
-			mask: "lines",
-			autoSplit: true,
-			onSplit(self) {
-				return gsap.from(self.lines, {
-					delay: 1,
-					duration: 1.5,
-					y: "100%",
-					autoAlpha: 0,
-					stagger: 0.1,
-					ease: "power3.out",
-				});
-			},
-		});
-	});
+	useRevealSplitTextInView(ref, 1);
 
 	return (
 		<section className={css.section}>

@@ -36,7 +36,7 @@ export default function Item({ src, alt, children }) {
 
 	const linkRef = React.useRef(null);
 	const textRef = React.useRef(null);
-	useHoverLinkScramble(linkRef, textRef, "white", "white", 0);
+	useHoverLinkScramble(linkRef, textRef, "white", "white");
 
 	return (
 		<Link

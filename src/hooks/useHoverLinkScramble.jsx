@@ -48,7 +48,7 @@ export default function useHoverLinkScramble(
 	textRef,
 	colorStart = "gray",
 	colorEnd = "black",
-	delay = 0.2
+	delay = 0
 ) {
 	let hexColorStart;
 	let hexColorEnd;
@@ -118,6 +118,7 @@ export default function useHoverLinkScramble(
 					{
 						delay: delay,
 						color: hexColorEnd,
+						ease: "steps(1)",
 						duration: 0.8,
 						immediateRender: false,
 					},
@@ -126,7 +127,7 @@ export default function useHoverLinkScramble(
 				.to(
 					selectedCharsArr,
 					{
-						duration: 1,
+						duration: 1.5,
 						stagger: 0.025,
 						scrambleText: {
 							text: "{original}",

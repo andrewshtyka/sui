@@ -114,8 +114,8 @@ export default function Timeline({ containerRef }) {
 		[innerHeightTimelinePx / -4, 0, innerHeightTimelinePx / 4]
 	);
 	const boxPosition = useSpring(boxPositionRaw, {
-		stiffness: 300,
-		damping: 30,
+		stiffness: 200,
+		damping: 50,
 	});
 
 	return (

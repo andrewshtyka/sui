@@ -106,6 +106,7 @@
 	background-color: var(--color-bg-light);
 
 	position: absolute;
+	z-index: 2;
 }
 
 .container_path {
@@ -132,5 +133,5 @@
 }
 
 .bottom {
-	top: 90%;
+	top: 60%;
 }
