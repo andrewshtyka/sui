@@ -22,18 +22,21 @@
 
 @media (width >= 480px) {
 	.section {
+		--padding-preloader: calc(var(--padding-body) * 5);
 		--width: 2vmin;
 	}
 }
 
 @media (width >= 768px) {
 	.section {
+		--padding-preloader: calc(var(--padding-body) * 4);
 		--width: 1.5vmin;
 	}
 }
 
 @media (width >= 992px) {
 	.section {
+		--padding-preloader: calc(var(--padding-body) * 3);
 		--width: 0.9vmax;
 	}
 }

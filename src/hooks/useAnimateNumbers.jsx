@@ -31,6 +31,7 @@ export default function useAnimateNumbers(
 	numFrom = 0,
 	numTo = 100,
 	duration = 1,
+	delay = 0,
 	startAnimation = false
 ) {
 	React.useEffect(() => {
@@ -39,6 +40,7 @@ export default function useAnimateNumbers(
 		if (!startAnimation) return;
 
 		const controls = animate(numFrom, numTo, {
+			delay: delay,
 			duration: duration,
 			onUpdate(value) {
 				node.textContent = value.toFixed() + "%";
@@ -46,5 +48,5 @@ export default function useAnimateNumbers(
 		});
 
 		return () => controls.stop();
-	}, [ref, numFrom, numTo, duration, startAnimation]);
+	}, [ref, numFrom, numTo, duration, startAnimation, delay]);
 }

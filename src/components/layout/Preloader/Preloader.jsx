@@ -34,7 +34,10 @@ import { useLenis } from "lenis/react";
 
 const MotionImage = motion.create(Image);
 
-const ANIM_DURATION_MS = 1000 * 1.5;
+const INIT_ANIM_DURATION_MS = 500;
+const INIT_ANIM_DURATION_SEC = INIT_ANIM_DURATION_MS * 0.001;
+
+const ANIM_DURATION_MS = 1000;
 const ANIM_DURATION_SEC = ANIM_DURATION_MS * 0.001;
 
 const TIME_BEFORE_SCROLLABLE_MS = ANIM_DURATION_MS * 2;
@@ -100,7 +103,14 @@ export default function Preloader() {
 
 	// 3. run numbers animation when startAnimation === true
 	const numRef = React.useRef();
-	useAnimateNumbers(numRef, 0, 100, ANIM_DURATION_SEC, startAnimation);
+	useAnimateNumbers(
+		numRef,
+		0,
+		100,
+		ANIM_DURATION_SEC * 0.75,
+		INIT_ANIM_DURATION_SEC,
+		startAnimation
+	);
 
 	return (
 		<AnimatePresence mode="wait">
@@ -151,13 +161,30 @@ export default function Preloader() {
 const variantsLine = {
 	initial: {
 		x: 0,
+		y: "100%",
+		opacity: 0,
 	},
 	animate: (animationStatus) => ({
 		x: animationStatus ? "var(--position-end)" : 0,
+		y: animationStatus ? "0%" : "100%",
+		opacity: animationStatus ? 1 : 0,
 	}),
 	transition: {
-		duration: ANIM_DURATION_SEC,
-		ease: cubicBezier(0.6, 0, 0.75, 1),
+		x: {
+			delay: INIT_ANIM_DURATION_SEC,
+			duration: ANIM_DURATION_SEC * 0.75,
+			ease: cubicBezier(0.6, 0, 0.75, 1),
+		},
+		y: {
+			delay: 0,
+			duration: ANIM_DURATION_SEC * 0.4,
+			ease: cubicBezier(0.25, 0, 0.25, 1),
+		},
+		opacity: {
+			delay: 0,
+			duration: ANIM_DURATION_SEC * 0.5,
+			ease: cubicBezier(0.25, 0, 0.25, 1),
+		},
 	},
 };
 
@@ -169,6 +196,7 @@ const variantsContainerImg = {
 		"--mask-end": animationStatus ? ["0%", "50%", "50%", "100%"] : "0%",
 	}),
 	transition: {
+		delay: INIT_ANIM_DURATION_SEC,
 		times: [0, 0.6, 0.5, 1],
 		duration: ANIM_DURATION_SEC,
 		ease: cubicBezier(0.6, 0, 0.75, 1),
@@ -183,6 +211,7 @@ const variantsImg = {
 		width: animationStatus ? "0svw" : "80svw",
 	}),
 	transition: {
+		delay: INIT_ANIM_DURATION_SEC,
 		duration: ANIM_DURATION_SEC,
 		ease: cubicBezier(0.6, 0, 0.75, 1),
 	},
