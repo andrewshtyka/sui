@@ -4,7 +4,13 @@
 
 html {
 	scrollbar-width: none;
-	overscroll-behavior: none;
+	overscroll-behavior: initial;
+}
+
+@media (width >= 768px) {
+	html {
+		overscroll-behavior: none;
+	}
 }
 
 body {

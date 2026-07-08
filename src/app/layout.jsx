@@ -7,6 +7,7 @@ import { serif, mono } from "@/utils/importFonts";
 
 // providers
 import HeroTextHoverProvider from "@/providers/HeroTextHoverProvider";
+import PreloaderProvider from "@/providers/PreloaderProvider";
 
 // styles
 import "@/styles/tokens/spacings.css";
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
 		<html lang="en" className={`${serif.variable} ${mono.variable}`}>
 			<body>
 				<ReactLenis root={true} options={{ autoRaf: true }} />
-				<HeroTextHoverProvider>{children}</HeroTextHoverProvider>
+				<PreloaderProvider>
+					<HeroTextHoverProvider>{children}</HeroTextHoverProvider>
+				</PreloaderProvider>
 			</body>
 		</html>
 	);

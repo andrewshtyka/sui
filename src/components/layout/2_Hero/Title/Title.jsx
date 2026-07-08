@@ -19,6 +19,7 @@ import useBlurPosition from "@/hooks/useBlurPosition";
 
 // providers / context
 import { HeroTextHoverContext } from "@/providers/HeroTextHoverProvider";
+import { PreloaderContext } from "@/providers/PreloaderProvider";
 
 // styles
 import css from "./Title.module.css";
@@ -29,6 +30,7 @@ import React from "react";
 // #endregion ===========================
 
 export default function Title({ children }) {
+	const { isVisiblePreloader } = React.useContext(PreloaderContext);
 	const { isHovered, setIsHovered } = React.useContext(HeroTextHoverContext);
 
 	const { xNormal, yNormal } = useBlurPosition(isHovered);
@@ -42,7 +44,7 @@ export default function Title({ children }) {
 				"--text-x": mouseX,
 				"--text-y": mouseY,
 			}}
-			{...anim(variantsText)}
+			{...anim(variantsText, isVisiblePreloader)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
@@ -55,9 +57,9 @@ const variantsText = {
 	initial: {
 		opacity: 0,
 	},
-	animate: {
-		opacity: 1,
-	},
+	animate: (preloaderStatus) => ({
+		opacity: preloaderStatus ? 0 : 1,
+	}),
 	transition: {
 		delay: 0.25,
 		duration: 1.5,
@@ -65,11 +67,11 @@ const variantsText = {
 	},
 };
 
-function anim(obj) {
+function anim(obj, preloaderStatus) {
 	return {
 		variants: obj,
 		initial: obj.initial,
-		animate: obj.animate,
+		animate: obj.animate(preloaderStatus),
 		transition: obj.transition,
 	};
 }

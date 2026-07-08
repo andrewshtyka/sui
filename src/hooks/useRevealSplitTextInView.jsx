@@ -21,6 +21,7 @@ import { useGSAP } from "@gsap/react";
 // hooks
 
 // providers / context
+import { PreloaderContext } from "@/providers/PreloaderProvider";
 
 // styles
 // import css from '.'
@@ -35,33 +36,40 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
 export default function useRevealSplitTextInView(ref, delay = 0) {
-	useGSAP(() => {
-		const element = ref.current;
-		if (!element) return;
+	const { isVisiblePreloader } = React.useContext(PreloaderContext);
 
-		const split = SplitText.create(element, {
-			type: "lines",
-			mask: "lines",
-		});
+	useGSAP(
+		() => {
+			const element = ref.current;
+			if (!element) return;
 
-		gsap.fromTo(
-			split.lines,
-			{
-				y: "100%",
-				autoAlpha: 0,
-			},
-			{
-				y: "0%",
-				delay: delay,
-				scrollTrigger: {
-					trigger: element,
-					start: "bottom 95%",
-				},
-				duration: 1.5,
-				autoAlpha: 1,
-				stagger: 0.1,
-				ease: "power3.out",
+			const split = SplitText.create(element, {
+				type: "lines",
+				mask: "lines",
+			});
+
+			if (!isVisiblePreloader) {
+				gsap.fromTo(
+					split.lines,
+					{
+						y: "100%",
+						autoAlpha: 0,
+					},
+					{
+						y: "0%",
+						delay: delay,
+						scrollTrigger: {
+							trigger: element,
+							start: "bottom 95%",
+						},
+						duration: 1.5,
+						autoAlpha: 1,
+						stagger: 0.1,
+						ease: "power3.out",
+					}
+				);
 			}
-		);
-	});
+		},
+		{ dependencies: [isVisiblePreloader] }
+	);
 }

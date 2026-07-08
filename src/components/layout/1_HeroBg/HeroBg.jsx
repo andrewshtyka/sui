@@ -19,6 +19,7 @@ import { dataHero } from "@/data/dataHero";
 // hooks
 
 // providers / context
+import { PreloaderContext } from "@/providers/PreloaderProvider";
 
 // styles
 import css from "./HeroBg.module.css";
@@ -30,6 +31,7 @@ import React from "react";
 
 export default function HeroBg() {
 	const ballBlackRef = React.useRef(null);
+	const { isVisiblePreloader } = React.useContext(PreloaderContext);
 
 	return (
 		<div className={css.container}>
@@ -49,9 +51,11 @@ export default function HeroBg() {
 				<motion.div
 					ref={ballBlackRef}
 					className={css.ball_black}
-					{...anim(variantsBall)}
+					{...anim(variantsBall, isVisiblePreloader)}
 					onAnimationComplete={() => {
-						ballBlackRef.current.style.display = "none";
+						if (!isVisiblePreloader) {
+							ballBlackRef.current.style.display = "none";
+						}
 					}}
 				/>
 			</div>
@@ -66,23 +70,23 @@ const variantsBall = {
 		x: "-50%",
 		opacity: 1,
 	},
-	animate: {
-		y: "-50%",
-		x: "-50%",
-		opacity: 0,
-	},
+	animate: (preloaderStatus) => ({
+		y: preloaderStatus ? "0%" : "-50%",
+		x: preloaderStatus ? "-50%" : "-50%",
+		opacity: preloaderStatus ? 1 : 0,
+	}),
 	transition: {
-		y: { duration: 1.5, delay: 0.1 },
-		opacity: { duration: 1.5, delay: 0.6 },
+		y: { duration: 1.5, delay: 0 },
+		opacity: { duration: 1.5, delay: 0.3 },
 		ease: cubicBezier(0.25, 0, 0.75, 1),
 	},
 };
 
-function anim(obj) {
+function anim(obj, preloaderStatus) {
 	return {
 		variants: obj,
 		initial: obj.initial,
-		animate: obj.animate,
+		animate: obj.animate(preloaderStatus),
 		transition: obj.transition,
 	};
 }

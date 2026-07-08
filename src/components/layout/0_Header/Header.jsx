@@ -15,12 +15,14 @@ import Image from "next/image";
 
 // constants
 
+
 // data
 import { dataHeader } from "@/data/dataHeader";
 
 // hooks
 
 // providers / context
+import { PreloaderContext } from "@/providers/PreloaderProvider";
 
 // styles
 import css from "./Header.module.css";
@@ -31,8 +33,13 @@ import React from "react";
 // #endregion ===========================
 
 export default function Header() {
+	const { isVisiblePreloader } = React.useContext(PreloaderContext);
+
 	return (
-		<motion.header className={css.header} {...anim(variantsHeader)}>
+		<motion.header
+			className={css.header}
+			{...anim(variantsHeader, isVisiblePreloader)}
+		>
 			{/* logo */}
 			<div className={css.col_1}>
 				<Image
@@ -75,9 +82,9 @@ const variantsHeader = {
 	initial: {
 		y: "-150%",
 	},
-	animate: {
-		y: 0,
-	},
+	animate: (preloaderStatus) => ({
+		y: preloaderStatus ? "-150%" : 0,
+	}),
 	transition: {
 		delay: 0.5,
 		duration: 0.75,
@@ -85,11 +92,11 @@ const variantsHeader = {
 	},
 };
 
-function anim(obj) {
+function anim(obj, preloaderStatus) {
 	return {
 		variants: obj,
 		initial: obj.initial,
-		animate: obj.animate,
+		animate: obj.animate(preloaderStatus),
 		transition: obj.transition,
 	};
 }

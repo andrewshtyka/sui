@@ -22,6 +22,7 @@ import { dataHero } from "@/data/dataHero";
 import useRevealSplitTextInView from "@/hooks/useRevealSplitTextInView";
 
 // providers / context
+import { PreloaderContext } from "@/providers/PreloaderProvider";
 
 // styles
 import css from "./Hero.module.css";
@@ -33,6 +34,7 @@ import React from "react";
 
 export default function Hero() {
 	const ref = React.useRef(null);
+	const { isVisiblePreloader } = React.useContext(PreloaderContext);
 	useRevealSplitTextInView(ref, 1);
 
 	return (
@@ -47,7 +49,7 @@ export default function Hero() {
 
 				<motion.div
 					className={css.container_buttons}
-					{...anim(variantsButtons)}
+					{...anim(variantsButtons, isVisiblePreloader)}
 				>
 					<ButtonPrimary color="dark">
 						{dataHero.btn.dark}
@@ -66,10 +68,10 @@ const variantsButtons = {
 		y: "75%",
 		opacity: 0,
 	},
-	animate: {
-		y: "0",
-		opacity: 1,
-	},
+	animate: (preloaderStatus) => ({
+		y: preloaderStatus ? "75%" : "0",
+		opacity: preloaderStatus ? 0 : 1,
+	}),
 	transition: {
 		duration: 1.25,
 		delay: 1.25,
@@ -77,11 +79,11 @@ const variantsButtons = {
 	},
 };
 
-function anim(obj) {
+function anim(obj, preloaderStatus) {
 	return {
 		variants: obj,
 		initial: obj.initial,
-		animate: obj.animate,
+		animate: obj.animate(preloaderStatus),
 		transition: obj.transition,
 	};
 }

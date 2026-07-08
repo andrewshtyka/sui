@@ -21,6 +21,7 @@ import GetStarted from "@/components/layout/9_GetStarted/GetStarted";
 import Header from "@/components/layout/0_Header/Header";
 import TopWrapper from "@/components/layout/TopWrapper/TopWrapper";
 import Overshoot from "@/components/layout/11_Overshoot/Overshoot";
+import Preloader from "@/components/layout/Preloader/Preloader";
 
 // constants
 
@@ -39,6 +40,7 @@ import React from "react";
 export default function HomePage() {
 	return (
 		<>
+			<Preloader />
 
 			<Header />
 

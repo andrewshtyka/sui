@@ -19,6 +19,7 @@ import DottedLine from "@/components/ui/DottedLine/DottedLine";
 import {
 	useGetViewportHeight,
 	useGetPageHeight,
+	useGetPageWidth,
 } from "@/hooks/useGetPageSizes";
 import { useLenis } from "lenis/react";
 
@@ -41,6 +42,8 @@ export default function Overshoot() {
 	const lenis = useLenis();
 	const { viewportHeight } = useGetViewportHeight();
 	const { pageHeight } = useGetPageHeight();
+	const { pageWidth } = useGetPageWidth();
+	const isMobile = pageWidth < 768;
 
 	const overShootHeight = viewportHeight * 0.4;
 	const pageHeightWithoutOvershoot = pageHeight - overShootHeight;
@@ -53,6 +56,7 @@ export default function Overshoot() {
 	// overshoot logic
 	React.useEffect(() => {
 		if (!lenis) return;
+		if (isMobile) return;
 
 		// scroll up, when overshoot is in the viewport
 		function performScroll(time) {
@@ -92,7 +96,13 @@ export default function Overshoot() {
 		return () => {
 			lenis.off("scroll", observeBoundary);
 		};
-	}, [lenis, pageHeightWithoutOvershoot, viewportHeight, scrollToPosition]);
+	}, [
+		lenis,
+		pageHeightWithoutOvershoot,
+		viewportHeight,
+		scrollToPosition,
+		isMobile,
+	]);
 
 	const ref = React.useRef(null);
 	const { scrollYProgress } = useScroll({

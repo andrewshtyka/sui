@@ -30,6 +30,9 @@ export default function DottedLine({
 	color = "var(--color-gray-800)",
 	isHorizontal = true,
 	size = "100%",
+	strokeWidth = 2,
+	strokeDashStart = 2,
+	strokeDashEnd = 10,
 }) {
 	return (
 		<svg
@@ -40,8 +43,8 @@ export default function DottedLine({
 		>
 			<line
 				stroke={color}
-				strokeWidth="2"
-				strokeDasharray="2, 10"
+				strokeWidth={strokeWidth}
+				strokeDasharray={`${strokeDashStart}, ${strokeDashEnd}`}
 				x1={isHorizontal ? "0" : "1"}
 				y1={isHorizontal ? "1" : "0"}
 				x2={isHorizontal ? "100%" : "1"}
