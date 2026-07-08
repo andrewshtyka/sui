@@ -24,19 +24,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import css from '.'
 
 // utility
-import React from "react";
 import Lenis from "lenis";
-import { setLenis } from "@/lib/lenis";
+import React from "react";
 
 // #endregion ===========================
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function useLenis() {
+export const LenisContext = React.createContext({ lenis: null });
+
+export default function LenisProvider({ children }) {
+	const [lenis] = React.useState(() =>
+		typeof window !== "undefined" ? new Lenis() : null
+	);
+
 	React.useEffect(() => {
-		// Initialize a new Lenis instance for smooth scrolling
-		const lenis = new Lenis();
-		setLenis(lenis);
+		if (!lenis) return;
 
 		// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
 		lenis.on("scroll", ScrollTrigger.update);
@@ -53,5 +56,9 @@ export default function useLenis() {
 		return () => {
 			lenis.destroy();
 		};
-	}, []);
+	}, [lenis]);
+
+	return (
+		<LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+	);
 }

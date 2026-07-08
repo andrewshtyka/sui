@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // #region ============================== Imports
 
@@ -25,7 +25,6 @@ import Overshoot from "@/components/layout/11_Overshoot/Overshoot";
 // constants
 
 // hooks
-import useLenis from "@/hooks/useLenis";
 
 // providers / context
 
@@ -38,10 +37,9 @@ import React from "react";
 // #endregion ===========================
 
 export default function HomePage() {
-	useLenis();
-
 	return (
 		<>
+
 			<Header />
 
 			<TopWrapper>

@@ -15,6 +15,9 @@ import "@/styles/tokens/fonts.css";
 import "@/styles/reset.css";
 import "@/styles/global.css";
 
+// utility
+import ReactLenis from "lenis/react";
+
 // #endregion ===========================
 
 export const metadata = {
@@ -26,6 +29,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${serif.variable} ${mono.variable}`}>
 			<body>
+				<ReactLenis root={true} options={{ lerp: 0.2 }} />
 				<HeroTextHoverProvider>{children}</HeroTextHoverProvider>
 			</body>
 		</html>

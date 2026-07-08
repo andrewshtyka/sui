@@ -55,18 +55,17 @@ body {
 	color: var(--char-color);
 }
 
-
 /* ================================================== */
 /* */
 /* Lenis */
 
 html.lenis,
 html.lenis body {
-  height: auto;
+	height: auto;
 }
 
 .lenis:not(.lenis-autoToggle).lenis-stopped {
-  overflow: clip;
+	overflow: clip;
 }
 
 .lenis [data-lenis-prevent],
@@ -74,15 +73,15 @@ html.lenis body {
 .lenis [data-lenis-prevent-touch],
 .lenis [data-lenis-prevent-vertical],
 .lenis [data-lenis-prevent-horizontal] {
-  overscroll-behavior: contain;
+	overscroll-behavior: contain;
 }
 
 .lenis.lenis-smooth iframe {
-  pointer-events: none;
+	pointer-events: none;
 }
 
 .lenis.lenis-autoToggle {
-  transition-property: overflow;
-  transition-duration: 1ms;
-  transition-behavior: allow-discrete;
+	transition-property: overflow;
+	transition-duration: 1ms;
+	transition-behavior: allow-discrete;
 }

@@ -9,100 +9,127 @@ import { motion, useMotionValue, animate, useTransform } from "motion/react";
 // components
 import DottedLine from "@/components/ui/DottedLine/DottedLine";
 
+// hooks
+import {
+	useGetViewportHeight,
+	useGetPageHeight,
+} from "@/hooks/useGetPageSizes";
+import { useLenis } from "lenis/react";
+
 // providers / context
+// import { LenisContext } from "@/providers/LenisProvider";
 
 // styles
 import css from "./Overshoot.module.css";
 
 // utility
 import React from "react";
-import { onLenisReady } from "@/lib/lenis";
 
 // #endregion ===========================
 
+const IDLE_DELAY = 1000;
+
 export default function Overshoot() {
+	const lenis = useLenis();
+	const { viewportHeight } = useGetViewportHeight();
+	const { pageHeight } = useGetPageHeight();
+
+	const overShootHeight = viewportHeight * 0.4;
+	const pageHeightWithoutOvershoot = pageHeight - overShootHeight;
+	const scrollToPosition = pageHeightWithoutOvershoot - viewportHeight;
+
+	const timeStart = React.useRef(0);
+	const isRunning = React.useRef(false);
+	const rafId = React.useRef(null);
+
+	// overshoot logic
 	React.useEffect(() => {
-		let lenisInstance = null;
-		let handleScroll;
+		if (!lenis) return;
 
-		const unsubscribe = onLenisReady((lenis) => {
-			lenisInstance = lenis;
-			handleScroll = (e) => {
-				console.log(e.velocity); // scroll, progress, velocity
-			};
-			lenis.on("scroll", handleScroll);
-		});
+		// scroll up, when overshoot is in the viewport
+		function performScroll(time) {
+			if (!isRunning.current) return;
 
-		return () => {
-			unsubscribe();
-			if (lenisInstance && handleScroll) {
-				lenisInstance.off("scroll", handleScroll);
+			if (time - timeStart.current >= IDLE_DELAY) {
+				lenis.scrollTo(scrollToPosition, {
+					lock: true,
+				});
+				timeStart.current = time;
 			}
+			rafId.current = requestAnimationFrame(performScroll);
+		}
+
+		// observe border, and fire raF when it's crossed
+		function observeScroll(e) {
+			const currentScroll = e.scroll + viewportHeight;
+
+			if (currentScroll >= pageHeightWithoutOvershoot) {
+				if (!isRunning.current) {
+					isRunning.current = true;
+					// timeStart.current = performance.now();
+					timeStart.current = lenis.time;
+
+					rafId.current = requestAnimationFrame(performScroll);
+				}
+			} else {
+				isRunning.current = false;
+				if (rafId.current) {
+					cancelAnimationFrame(rafId.current);
+					rafId.current = null;
+				}
+			}
+		}
+
+		lenis.on("scroll", observeScroll);
+		return () => {
+			lenis.off("scroll", observeScroll);
 		};
-	}, []);
+	}, [lenis, pageHeightWithoutOvershoot, viewportHeight, scrollToPosition]);
 
 	return (
-		<motion.div
-			className={css.container}
-			style={
-				{
-					// change height
-				}
-			}
-		>
-			<motion.div
-				className={css.content}
-				style={
-					{
-						// change clipPath "bottom"
-						// change "y" position
-					}
-				}
-			>
-				<div className={`${css.bar} ${css.bar_1}`}></div>
+		<div className={css.container}>
+			<div className={`${css.bar} ${css.bar_1}`}></div>
 
-				<div className={`${css.bar} ${css.bar_2}`}>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-						size="400px"
-					/>
-				</div>
+			<div className={`${css.bar} ${css.bar_2}`}>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+			</div>
 
-				<div className={`${css.bar} ${css.bar_3}`}>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-					/>
-				</div>
+			<div className={`${css.bar} ${css.bar_3}`}>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+			</div>
 
-				<div className={`${css.bar} ${css.bar_4}`}>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-					/>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-					/>
-				</div>
+			<div className={`${css.bar} ${css.bar_4}`}>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+			</div>
 
-				<div className={`${css.bar} ${css.bar_5}`}>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-					/>
-				</div>
+			<div className={`${css.bar} ${css.bar_5}`}>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+			</div>
 
-				<div className={`${css.bar} ${css.bar_6}`}>
-					<DottedLine
-						isHorizontal={false}
-						color="var(--color-bg-light)"
-					/>
-				</div>
+			<div className={`${css.bar} ${css.bar_6}`}>
+				<DottedLine
+					isHorizontal={false}
+					color="var(--color-bg-light)"
+				/>
+			</div>
 
-				<div className={`${css.bar} ${css.bar_7}`} />
-			</motion.div>
-		</motion.div>
+			<div className={`${css.bar} ${css.bar_7}`} />
+		</div>
 	);
 }
