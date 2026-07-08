@@ -34,10 +34,10 @@ import { useLenis } from "lenis/react";
 
 const MotionImage = motion.create(Image);
 
-const TIME_BEFORE_SCROLLABLE_MS = 2000;
-
 const ANIM_DURATION_MS = 1000 * 1.5;
 const ANIM_DURATION_SEC = ANIM_DURATION_MS * 0.001;
+
+const TIME_BEFORE_SCROLLABLE_MS = ANIM_DURATION_MS * 2;
 
 export default function Preloader() {
 	const { isVisiblePreloader, setIsVisiblePreloader } =
@@ -52,7 +52,6 @@ export default function Preloader() {
 		if (isVisiblePreloader) {
 			lenis.scrollTo(0, { immediate: true });
 			lenis.stop();
-			return;
 		}
 
 		const lenisId = setTimeout(() => {
@@ -76,23 +75,22 @@ export default function Preloader() {
 		const fontsPromise = document.fonts.ready;
 
 		Promise.all([resourcesPromise, fontsPromise]).then(() => {
-			lenis.scrollTo(0, { immediate: true });
 			setStartAnimation(true);
 		});
-	}, [lenis]);
+	}, []);
 
 	// 2. if startAnimation === true, start timer (to remove preloader)
 	React.useEffect(() => {
 		if (!startAnimation) return;
 
 		document.body.style.cursor = "default";
+
 		const id = setTimeout(() => {
-			lenis.scrollTo(0, { immediate: true });
 			setIsVisiblePreloader(false);
 		}, ANIM_DURATION_MS);
 
 		return () => clearTimeout(id);
-	}, [startAnimation, setIsVisiblePreloader, lenis]);
+	}, [startAnimation, setIsVisiblePreloader]);
 
 	// 3. run numbers animation when startAnimation === true
 	const numRef = React.useRef();
