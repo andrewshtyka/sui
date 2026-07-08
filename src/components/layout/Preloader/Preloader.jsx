@@ -50,14 +50,17 @@ export default function Preloader() {
 		if (!lenis) return;
 
 		if (isVisiblePreloader) {
+			window.scrollTo(0, 0);
 			lenis.scrollTo(0, { immediate: true });
 			lenis.stop();
 		}
 
+		window.scrollTo(0, 0);
 		lenis.scrollTo(0, { immediate: true });
 		lenis.stop();
 
 		const lenisId = setTimeout(() => {
+			window.scrollTo(0, 0);
 			lenis.scrollTo(0, { immediate: true });
 			lenis.start();
 		}, TIME_BEFORE_SCROLLABLE_MS);
