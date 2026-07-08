@@ -9,11 +9,16 @@
 		display: flex;
 		overflow: hidden;
 		position: relative;
-	display: flex;
-
 	}
 }
 
+.content {
+	display: flex;
+	width: 100%;
+	height: auto;
+	position: relative;
+	top: 10%;
+}
 
 .bar {
 	flex: 1;
@@ -33,10 +38,14 @@
 .bar_6 {
 	background: linear-gradient(
 		to bottom,
-		var(--color-bg-light) 40%,
+		var(--color-bg-light) 35%,
 		var(--color-bg-accent) 70%,
 		var(--color-bg-dark) 100%
 	);
+
+	& .container_line {
+		top: 45%;
+	}
 }
 
 .bar_3,
@@ -47,6 +56,10 @@
 		var(--color-bg-accent) 60%,
 		var(--color-bg-dark) 100%
 	);
+
+	& .container_line {
+		top: 25%;
+	}
 }
 
 .bar_4 {
@@ -58,10 +71,25 @@
 	);
 	display: flex;
 	justify-content: space-between;
+
+	& .container_line {
+		top: 5%;
+	}
 }
 
 .bar_5,
 .bar_6 {
 	display: flex;
 	flex-direction: row-reverse;
+}
+
+/* ================================================== */
+/* */
+/* Lines */
+
+.container_line {
+	display: inline-flex;
+	width: fit-content;
+	height: 100%;
+	position: relative;
 }

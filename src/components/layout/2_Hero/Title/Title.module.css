@@ -6,8 +6,8 @@
 
 	width: 100%;
 	height: 100%;
-	padding-block-start: 4vmax;
-	padding-block-end: 4vmax;
+	padding-block-start: 10vmax;
+	padding-block-end: 10vmax;
 
 	background-color: var(--color-bg-accent);
 	background-clip: text;
@@ -27,16 +27,41 @@
 
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	
+
 	transform: translateZ(0);
 	backface-visibility: hidden;
 	/* will-change: background-image; */
-	
+
 	cursor: default;
 	max-width: 5ch;
 }
 
-@media (width >= 1200px) {
+@media (width >= 560px) {
+	.title {
+		padding-block-end: 10vmax;
+	}
+}
+
+@media (width >= 700px) {
+	.title {
+		padding-block-end: 6vmax;
+	}
+}
+
+@media (width >= 768px) {
+	.title {
+		padding-block-end: 8vmax;
+	}
+}
+
+@media (width >= 920px) {
+	.title {
+		padding-block-start: 4vmax;
+		padding-block-end: 4vmax;
+	}
+}
+
+@media (width >= 992px) {
 	.title {
 		max-width: none;
 		background-image: radial-gradient(

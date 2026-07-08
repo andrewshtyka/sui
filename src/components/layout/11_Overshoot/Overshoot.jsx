@@ -4,7 +4,13 @@
 
 // animation
 // import * as motion from 'motion/react-client'
-import { motion, useMotionValue, animate, useTransform } from "motion/react";
+import {
+	motion,
+	useMotionValue,
+	animate,
+	useTransform,
+	useScroll,
+} from "motion/react";
 
 // components
 import DottedLine from "@/components/ui/DottedLine/DottedLine";
@@ -28,6 +34,8 @@ import React from "react";
 // #endregion ===========================
 
 const IDLE_DELAY = 1000;
+const lineColor = "var(--color-bg-dark)";
+const lineSize = "200%";
 
 export default function Overshoot() {
 	const lenis = useLenis();
@@ -53,21 +61,20 @@ export default function Overshoot() {
 			if (time - timeStart.current >= IDLE_DELAY) {
 				lenis.scrollTo(scrollToPosition, {
 					lock: true,
-					lerp: 0.2
+					lerp: 0.15,
 				});
 				timeStart.current = time;
 			}
 			rafId.current = requestAnimationFrame(performScroll);
 		}
 
-		// observe border, and fire raF when it's crossed
-		function observeScroll(e) {
+		// observe boundary, and fire raF when boundary is crossed
+		function observeBoundary(e) {
 			const currentScroll = e.scroll + viewportHeight;
 
 			if (currentScroll >= pageHeightWithoutOvershoot) {
 				if (!isRunning.current) {
 					isRunning.current = true;
-					// timeStart.current = performance.now();
 					timeStart.current = lenis.time;
 
 					rafId.current = requestAnimationFrame(performScroll);
@@ -81,56 +88,77 @@ export default function Overshoot() {
 			}
 		}
 
-		lenis.on("scroll", observeScroll);
+		lenis.on("scroll", observeBoundary);
 		return () => {
-			lenis.off("scroll", observeScroll);
+			lenis.off("scroll", observeBoundary);
 		};
 	}, [lenis, pageHeightWithoutOvershoot, viewportHeight, scrollToPosition]);
 
+	const ref = React.useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["start end", "end end"],
+	});
+	const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+
 	return (
-		<div className={css.container}>
-			<div className={`${css.bar} ${css.bar_1}`}></div>
-
-			<div className={`${css.bar} ${css.bar_2}`}>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
+		<div ref={ref} className={css.container}>
+			<div className={css.content}>
+				<div className={`${css.bar} ${css.bar_1}`}></div>
+				<div className={`${css.bar} ${css.bar_2}`}>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+				</div>
+				<div className={`${css.bar} ${css.bar_3}`}>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+				</div>
+				<div className={`${css.bar} ${css.bar_4}`}>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+				</div>
+				<div className={`${css.bar} ${css.bar_5}`}>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+				</div>
+				<div className={`${css.bar} ${css.bar_6}`}>
+					<motion.span className={css.container_line} style={{ y }}>
+						<DottedLine
+							isHorizontal={false}
+							color={lineColor}
+							size={lineSize}
+						/>
+					</motion.span>
+				</div>
+				<div className={`${css.bar} ${css.bar_7}`} />
 			</div>
-
-			<div className={`${css.bar} ${css.bar_3}`}>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
-			</div>
-
-			<div className={`${css.bar} ${css.bar_4}`}>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
-			</div>
-
-			<div className={`${css.bar} ${css.bar_5}`}>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
-			</div>
-
-			<div className={`${css.bar} ${css.bar_6}`}>
-				<DottedLine
-					isHorizontal={false}
-					color="var(--color-bg-light)"
-				/>
-			</div>
-
-			<div className={`${css.bar} ${css.bar_7}`} />
 		</div>
 	);
 }
