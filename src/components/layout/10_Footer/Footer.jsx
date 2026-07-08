@@ -34,8 +34,8 @@ import IconLink from "./IconLink/IconLink";
 export default function Footer() {
 	const footerRef = React.useRef(null);
 	const isFooterInView = useInView(footerRef, {
-		margin: "0% 0% 5% 0%",
-		once: true
+		margin: "0% 0% -20% 0%",
+		once: true,
 	});
 
 	return (
