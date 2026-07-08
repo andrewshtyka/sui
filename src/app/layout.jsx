@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${serif.variable} ${mono.variable}`}>
 			<body>
-				<ReactLenis root={true} options={{ lerp: 0.2 }} />
+				<ReactLenis root={true} />
 				<HeroTextHoverProvider>{children}</HeroTextHoverProvider>
 			</body>
 		</html>

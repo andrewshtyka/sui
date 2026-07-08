@@ -58,7 +58,7 @@
 	align-items: center;
 	justify-content: center;
 
-	--pseudo-position: -60%;
+	--pseudo-position: -40%;
 
 	&::before,
 	&::after {
@@ -70,7 +70,7 @@
 	}
 
 	&::before {
-		top: var(--pseudo-position);
+		top: calc(var(--pseudo-position) * 1.2);
 		background: linear-gradient(
 			to bottom,
 			var(--color-bg-dark) 0%,
@@ -80,7 +80,7 @@
 	}
 
 	&::after {
-		bottom: var(--pseudo-position);
+		bottom: calc(var(--pseudo-position) * 1.2);
 		background: linear-gradient(
 			to top,
 			var(--color-bg-dark) 0%,

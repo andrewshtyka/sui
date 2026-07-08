@@ -53,6 +53,7 @@ export default function Overshoot() {
 			if (time - timeStart.current >= IDLE_DELAY) {
 				lenis.scrollTo(scrollToPosition, {
 					lock: true,
+					lerp: 0.2
 				});
 				timeStart.current = time;
 			}
