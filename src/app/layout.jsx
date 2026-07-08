@@ -26,6 +26,12 @@ export const metadata = {
 	description: "Reverse-engineered home page of Sui.io, by Andrew Shtyka",
 };
 
+export const viewport = {
+	width: "device-width",
+	initialScale: 1,
+	themeColor: "#000000",
+};
+
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${serif.variable} ${mono.variable}`}>
