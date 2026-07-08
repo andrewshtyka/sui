@@ -54,6 +54,9 @@ export default function Preloader() {
 			lenis.stop();
 		}
 
+		lenis.scrollTo(0, { immediate: true });
+		lenis.stop();
+
 		const lenisId = setTimeout(() => {
 			lenis.scrollTo(0, { immediate: true });
 			lenis.start();
