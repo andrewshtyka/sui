@@ -76,9 +76,10 @@ export default function Preloader() {
 		const fontsPromise = document.fonts.ready;
 
 		Promise.all([resourcesPromise, fontsPromise]).then(() => {
+			lenis.scrollTo(0, { immediate: true });
 			setStartAnimation(true);
 		});
-	}, []);
+	}, [lenis]);
 
 	// 2. if startAnimation === true, start timer (to remove preloader)
 	React.useEffect(() => {
@@ -86,11 +87,12 @@ export default function Preloader() {
 
 		document.body.style.cursor = "default";
 		const id = setTimeout(() => {
+			lenis.scrollTo(0, { immediate: true });
 			setIsVisiblePreloader(false);
 		}, ANIM_DURATION_MS);
 
 		return () => clearTimeout(id);
-	}, [startAnimation, setIsVisiblePreloader]);
+	}, [startAnimation, setIsVisiblePreloader, lenis]);
 
 	// 3. run numbers animation when startAnimation === true
 	const numRef = React.useRef();
