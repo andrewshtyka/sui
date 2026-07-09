@@ -26,6 +26,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "eslint-config-prettier": "^10.1.8",
+    "postcss-easing-gradients": "^3.0.1",
     "prettier": "^3.8.4"
   }
 }

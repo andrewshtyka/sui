@@ -30,20 +30,32 @@
 .bar_7 {
 	background: linear-gradient(
 		to bottom,
-		var(--color-bg-light) 50%,
+		var(--color-bg-light),
+		var(--color-bg-accent),
+		var(--color-bg-dark)
+			/* var(--color-bg-light) 50%,
 		var(--color-bg-accent) 75%,
-		var(--color-bg-dark) var(--gradient-final)
+		var(--color-bg-dark) var(--gradient-final) */
 	);
+	background-size: 100% 45%;
+	background-position: 0 83%;
+	background-repeat: no-repeat;
 }
 
 .bar_2,
 .bar_6 {
 	background: linear-gradient(
 		to bottom,
-		var(--color-bg-light) 35%,
+		var(--color-bg-light),
+		var(--color-bg-accent),
+		var(--color-bg-dark)
+			/* var(--color-bg-light) 35%,
 		var(--color-bg-accent) 70%,
-		var(--color-bg-dark) var(--gradient-final)
+		var(--color-bg-dark) var(--gradient-final) */
 	);
+	background-size: 100% 60%;
+	background-position: 0 76%;
+	background-repeat: no-repeat;
 
 	& .container_line {
 		top: 45%;
@@ -54,10 +66,17 @@
 .bar_5 {
 	background: linear-gradient(
 		to bottom,
-		var(--color-bg-light) 20%,
+		var(--color-bg-light),
+		var(--color-bg-accent),
+		var(--color-bg-dark)
+			/* var(--color-bg-light) 20%,
 		var(--color-bg-accent) 60%,
-		var(--color-bg-dark) var(--gradient-final)
+		var(--color-bg-dark) var(--gradient-final) */
 	);
+
+	background-size: 100% 76%;
+	background-position: 0 60%;
+	background-repeat: no-repeat;
 
 	& .container_line {
 		top: 25%;
@@ -67,10 +86,17 @@
 .bar_4 {
 	background: linear-gradient(
 		to bottom,
-		var(--color-bg-light) 0%,
+		var(--color-bg-light),
+		var(--color-bg-accent),
+		var(--color-bg-dark)
+			/* var(--color-bg-light) 0%,
 		var(--color-bg-accent) 50%,
-		var(--color-bg-dark) var(--gradient-final)
+		var(--color-bg-dark) var(--gradient-final) */
 	);
+	background-size: 100% 90%;
+	background-position: 0 0%;
+	background-repeat: no-repeat;
+
 	display: flex;
 	justify-content: space-between;
 
